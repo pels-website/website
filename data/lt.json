@@ -5,9 +5,8 @@
   "hero.alt": "lt...",
   "about.heading": "lt...",
   "about.text": "lt...",
-  "links.heading": "lt...",
-  "links.github": "lt...",
-  "links.email": "lt...",
-  "links.other": "lt...",
+  "contacts.heading": "Kontaktai",
+  "contacts.emailLabel": "El. paštas",
+  "contacts.phoneLabel": "Telefonas",
   "footer.copyright": "lt..."
 }
