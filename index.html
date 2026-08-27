@@ -3,35 +3,101 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Your Name / Project</title>
+  <title data-i18n="meta.title">Your Name / Project</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header>
-    <h1>Your Name</h1>
-    <p>Short tagline or description</p>
+    <div class="header-top">
+      <div>
+        <h1 data-i18n="header.name">Your Name</h1>
+        <p data-i18n="header.tagline">Short tagline or description</p>
+      </div>
+      <div class="lang-switch" role="group" aria-label="Language">
+        <button class="lang-btn" data-lang="en" aria-pressed="true">
+          <img src="svg/én.svg" alt="" width="24" height="18">
+          <span>EN</span>
+        </button>
+        <button class="lang-btn" data-lang="lt" aria-pressed="false">
+          <img src="svg/lt.svg" alt="" width="24" height="18">
+          <span>LT</span>
+        </button>
+        <button class="lang-btn" data-lang="ru" aria-pressed="false">
+          <img src="svg/ru.svg" alt="" width="24" height="18">
+          <span>RU</span>
+        </button>
+      </div>
+    </div>
   </header>
 
   <main>
-    <img src="photo.png" alt="Description of the image" class="hero">
-    
+    <img src="photo.png" alt="Description of the image" class="hero" data-i18n-alt="hero.alt">
+
     <section>
-      <h2>About</h2>
-      <p>A few sentences about you or the project.</p>
+      <h2 data-i18n="about.heading">About</h2>
+      <p data-i18n="about.text">A few sentences about you or the project.</p>
     </section>
 
     <section>
-      <h2>Links</h2>
+      <h2 data-i18n="links.heading">Links</h2>
       <ul>
-        <li><a href="https://github.com/yourusername">GitHub</a></li>
-        <li><a href="mailto:you@example.com">Email</a></li>
-        <li><a href="https://example.com">Another link</a></li>
+        <li><a href="https://github.com/yourusername" data-i18n="links.github">GitHub</a></li>
+        <li><a href="mailto:you@example.com" data-i18n="links.email">Email</a></li>
+        <li><a href="https://example.com" data-i18n="links.other">Another link</a></li>
       </ul>
     </section>
   </main>
 
   <footer>
-    <p>© 2026 Your Name</p>
+    <p data-i18n="footer.copyright">© 2026 Your Name</p>
   </footer>
+
+  <script>
+    const available = ['en', 'lt', 'ru'];
+
+    async function loadLang(lang) {
+      try {
+        const res = await fetch(`data/${lang}.json`);
+        if (!res.ok) throw new Error('not found');
+        return await res.json();
+      } catch {
+        if (lang !== 'en') return loadLang('en');
+        return {};
+      }
+    }
+
+    async function setLanguage(lang) {
+      if (!available.includes(lang)) lang = 'en';
+      const t = await loadLang(lang);
+
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (t[key] != null) el.textContent = t[key];
+      });
+
+      document.querySelectorAll('[data-i18n-alt]').forEach(el => {
+        const key = el.getAttribute('data-i18n-alt');
+        if (t[key] != null) el.alt = t[key];
+      });
+
+      document.documentElement.lang = lang;
+
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.setAttribute('aria-pressed', btn.dataset.lang === lang ? 'true' : 'false');
+      });
+
+      localStorage.setItem('lang', lang);
+    }
+
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.addEventListener('click', () => setLanguage(btn.dataset.lang));
+    });
+
+    const saved = localStorage.getItem('lang');
+    const browser = (navigator.language || 'en').slice(0, 2);
+    const start = available.includes(saved) ? saved :
+                  available.includes(browser) ? browser : 'en';
+    setLanguage(start);
+  </script>
 </body>
 </html>
