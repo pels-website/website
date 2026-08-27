@@ -5,9 +5,8 @@
   "hero.alt": "ru...",
   "about.heading": "ru...",
   "about.text": "ru...",
-  "links.heading": "ru...",
-  "links.github": "ru...",
-  "links.email": "ru...",
-  "links.other": "ru...",
+  "contacts.heading": "Контактная информация",
+  "contacts.emailLabel": "Электронная почта",
+  "contacts.phoneLabel": "Телефон",
   "footer.copyright": "ru..."
 }
