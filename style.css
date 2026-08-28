@@ -1,3 +1,16 @@
+/* =========================================
+   Dyslexia-friendly + professional palette
+   ========================================= */
+:root {
+  --bg: #f7f4ef;              /* warm soft off-white */
+  --text: #2c2420;            /* soft dark brown */
+  --text-muted: #5c534c;      /* secondary text */
+  --border: #ddd5cb;          /* warm soft border */
+  --accent: #4a3f35;          /* dark warm brown for links */
+  --contact-bar-bg: #3c2f2f;  /* sticky bar */
+  --focus: #c4a574;           /* soft gold focus ring */
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -6,12 +19,15 @@
 
 body {
   font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  line-height: 1.6;
-  color: #222;
+  font-size: 1.125rem;        /* 18px – easier to read */
+  line-height: 1.7;
+  letter-spacing: 0.01em;
+  word-spacing: 0.05em;
+  color: var(--text);
   max-width: 700px;
   margin: 0 auto;
   padding: 2rem 1.5rem;
-  background: #fafafa;
+  background: var(--bg);
 }
 
 header {
@@ -27,6 +43,8 @@ header {
 
 header h1 {
   font-size: 2.2rem;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
   margin-bottom: 0.3rem;
 }
 
@@ -42,7 +60,7 @@ header h1 {
   align-items: center;
   gap: 0.3rem;
   padding: 0.35rem 0.55rem;
-  border: 1px solid #ccc;
+  border: 1px solid var(--border);
   border-radius: 6px;
   background: #fff;
   cursor: pointer;
@@ -57,15 +75,16 @@ header h1 {
 }
 
 .lang-btn[aria-pressed="true"] {
-  background: #f0f0f0;
-  border-color: #999;
+  background: #f0ebe3;
+  border-color: #b8a99a;
   font-weight: 600;
 }
 
 .lang-btn:hover {
-  background: #f8f8f8;
+  background: #f5f1ea;
 }
 
+/* Hero image */
 .hero {
   width: 100%;
   max-width: 500px;
@@ -73,30 +92,58 @@ header h1 {
   display: block;
   margin: 0 auto 2rem;
   border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
 }
 
+/* Sections */
 section {
   margin-bottom: 2rem;
 }
 
 h2 {
   font-size: 1.4rem;
-  margin-bottom: 0.5rem;
-  border-bottom: 2px solid #ddd;
+  letter-spacing: 0.01em;
+  margin-bottom: 0.75rem;
+  border-bottom: 2px solid var(--border);
   padding-bottom: 0.3rem;
 }
 
-ul {
-  list-style: none;
+/* Contacts – desktop icons */
+.contact-icons {
+  display: flex;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+  margin-top: 1rem;
 }
 
-li {
-  margin: 0.5rem 0;
+.contact-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #fff;
+  border: 1px solid var(--border);
+  transition: all 0.2s ease;
+  color: var(--text);
 }
 
+.contact-icon:hover {
+  background: #f5f1ea;
+  border-color: #b8a99a;
+  transform: translateY(-2px);
+}
+
+.contact-icon img {
+  width: 24px;
+  height: 24px;
+  display: block;
+}
+
+/* Links */
 a {
-  color: #0066cc;
+  color: var(--accent);
   text-decoration: none;
 }
 
@@ -104,14 +151,76 @@ a:hover {
   text-decoration: underline;
 }
 
+/* Focus styles – important for accessibility */
+a:focus-visible,
+.lang-btn:focus-visible,
+.contact-icon:focus-visible,
+.mobile-contact-btn:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 3px;
+}
+
+/* Footer */
 footer {
   text-align: center;
   margin-top: 3rem;
-  font-size: 0.9rem;
-  color: #666;
+  font-size: 0.95rem;
+  color: var(--text-muted);
 }
 
-/* Responsive tweaks */
+/* ========== Mobile sticky contact bar ========== */
+.mobile-contacts {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: var(--contact-bar-bg);
+  padding: 0.6rem 0.5rem;
+  padding-bottom: max(0.6rem, env(safe-area-inset-bottom));
+  justify-content: space-around;
+  align-items: center;
+  box-shadow: 0 -2px 12px rgba(0,0,0,0.25);
+}
+
+.mobile-contact-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.12);
+  transition: background 0.2s, transform 0.15s;
+}
+
+.mobile-contact-btn:active {
+  background: rgba(255, 255, 255, 0.25);
+  transform: scale(0.92);
+}
+
+.mobile-contact-btn img {
+  display: block;
+  filter: brightness(0) invert(1); /* makes icons white */
+}
+
+/* ========== Responsive ========== */
+@media (max-width: 640px) {
+  .mobile-contacts {
+    display: flex;
+  }
+
+  body {
+    padding-bottom: 5.5rem; /* space for the sticky bar */
+  }
+
+  .lang-btn {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
+
 @media (max-width: 520px) {
   .header-top {
     flex-direction: column;
