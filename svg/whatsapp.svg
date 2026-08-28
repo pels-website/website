@@ -1,8 +1,7 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36">
-  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-    <!-- Speech bubble: circle with corner -->
-    <path d="M 18 6 C 11.373 6 6 11.373 6 18 C 6 24.627 11.373 30 18 30 C 19.5 30 20.937 29.727 22.273 29.227 L 28 31 L 26.227 25.273 C 26.727 23.937 27 22.5 27 21 C 27 11.373 23.627 6 18 6 Z"/>
-  </g>
-  <!-- Phone receiver icon -->
-  <path d="M 13.5 18.5 c -0.3 -0.67 -0.62 -0.68 -0.9 -0.69 c -0.23 -0.01 -0.5 -0.01 -0.77 -0.01 c -0.27 0 -0.7 0.1 -1.07 0.5 c -0.37 0.4 -1.4 1.37 -1.4 3.35 c 0 1.98 1.44 3.89 1.64 4.16 c 0.2 0.27 2.78 4.46 6.87 6.07 c 3.4 1.34 4.09 1.07 4.83 1 c 0.74 -0.07 2.38 -0.97 2.71 -1.91 c 0.34 -0.94 0.34 -1.74 0.24 -1.91 c -0.1 -0.17 -0.37 -0.27 -0.77 -0.47 c -0.4 -0.2 -2.38 -1.17 -2.75 -1.31 c -0.37 -0.13 -0.64 -0.2 -0.9 0.2 c -0.27 0.4 -1.04 1.31 -1.27 1.58 c -0.23 0.27 -0.47 0.3 -0.87 0.1 c -0.4 -0.2 -1.7 -0.63 -3.24 -2 c -1.19 -1.07 -2 -2.38 -2.24 -2.78 c -0.23 -0.4 -0.02 -0.62 0.18 -0.82 c 0.18 -0.18 0.4 -0.47 0.6 -0.7 c 0.2 -0.23 0.27 -0.4 0.4 -0.67 c 0.13 -0.27 0.07 -0.5 -0.03 -0.7 C 14.85 19.8 14.07 17.8 13.5 18.5 Z" fill="currentColor" stroke="none"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Bubble: Circle arc + 2 straight lines for the tail -->
+  <path d="M 8 17 A 8 8 0 1 1 15 18 L 5 22 Z" />
+  
+  <!-- Phone receiver (filled to match original WhatsApp style) -->
+  <path d="M 6.62 10.79 c 1.44 2.83 3.76 5.14 6.59 6.59 l 2.2 -2.2 c .27 -.27 .67 -.36 1.02 -.24 c 1.12 .37 2.33 .57 3.57 .57 c .55 0 1 .45 1 1 V 20 c 0 .55 -.45 1 -1 1 C 10.61 21 3 13.39 3 4 c 0 -.55 .45 -1 1 -1 h 3.5 c .55 0 1 .45 1 1 c 0 1.25 .2 2.45 .57 3.57 c .11 .35 .03 .74 -.25 1.02 l -2.2 2.2 z" fill="currentColor" stroke="none" />
 </svg>
