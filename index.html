@@ -43,13 +43,30 @@
       <p data-i18n="about.text">A few sentences about you or the project.</p>
     </section>
 
-    <section>
-      <h2 data-i18n="links.heading">Links</h2>
-      <ul>
-        <li><a href="https://github.com/yourusername" data-i18n="links.github">GitHub</a></li>
-        <li><a href="mailto:you@example.com" data-i18n="links.email">Email</a></li>
-        <li><a href="https://example.com" data-i18n="links.other">Another link</a></li>
-      </ul>
+<section class="contacts">
+      <h2 data-i18n="contacts.heading">Contacts</h2>
+
+      <div class="contact-icons">
+        <!-- Telegram -->
+        <a href="#" class="contact-icon" data-contact="telegram" target="_blank" rel="noopener">
+          <img src="svg/telegram.svg" alt="" width="24" height="24">
+        </a>
+
+        <!-- WhatsApp -->
+        <a href="#" class="contact-icon" data-contact="whatsapp" target="_blank" rel="noopener">
+          <img src="svg/whatsapp.svg" alt="" width="24" height="24">
+        </a>
+
+        <!-- Email -->
+        <a href="#" class="contact-icon" data-contact="email">
+          <img src="svg/email.svg" alt="" width="24" height="24">
+        </a>
+
+        <!-- Phone -->
+        <a href="#" class="contact-icon" data-contact="phone">
+          <img src="svg/phone.svg" alt="" width="24" height="24">
+        </a>
+      </div>
     </section>
   </main>
 
@@ -59,6 +76,20 @@
 
   <script>
     const available = ['en', 'lt', 'ru'];
+    let contacts = {};           // will hold data/config.json
+    let currentLangData = {};  // current language translations
+
+    // Load the language-independent config
+    async function loadContacts() {
+      try {
+        const res = await fetch('data/contacts.json');
+        if (!res.ok) throw new Error('contacts not found');
+        contacts = await res.json();
+      } catch (e) {
+        console.warn('Could not load contacts.json', e);
+        contacts = {};
+      }
+    }
 
     async function loadLang(lang) {
       try {
@@ -92,6 +123,33 @@
       });
 
       localStorage.setItem('lang', lang);
+
+      // Build contact links from config + set accessibility labels
+      document.querySelectorAll('[data-contact]').forEach(el => {
+        const type = el.getAttribute('data-contact');
+
+        // Build href from contacts
+        if (contacts[type]) {
+          if (type === 'telegram') {
+            el.href = `https://t.me/${contacts.phone}`;
+          } else if (type === 'whatsapp') {
+            el.href = `https://wa.me/${contacts.phone}`;
+          } else if (type === 'viber') {
+            el.href = `https://viber.me/${contacts.phone}`;
+          } else if (type === 'email') {
+            el.href = `mailto:${contacts.email}`;
+          } else if (type === 'phone') {
+            el.href = `tel:+${contacts.phone}`;
+          }
+        }
+
+        // Accessibility label (from language file)
+        const labelKey = `contacts.${type}Label`;
+        if (currentLangData[labelKey]) {
+          el.setAttribute('aria-label', currentLangData[labelKey]);
+          el.title = currentLangData[labelKey];
+        }
+      });
     }
 
     document.querySelectorAll('.lang-btn').forEach(btn => {
@@ -113,15 +171,14 @@
   <a href="#" class="mobile-contact-btn" data-contact="whatsapp" target="_blank" rel="noopener">
     <img src="svg/whatsapp.svg" alt="" width="22" height="22">
   </a>
-  <a href="#" class="mobile-contact-btn" data-contact="email">
+  <a href="#" class="mobile-contact-btn" data-contact="viber">
+    <img src="svg/viber.svg" alt="" width="22" height="22">
+  </a>
+    <a href="#" class="mobile-contact-btn" data-contact="email">
     <img src="svg/email.svg" alt="" width="22" height="22">
   </a>
   <a href="#" class="mobile-contact-btn" data-contact="phone">
     <img src="svg/phone.svg" alt="" width="22" height="22">
-  </a>
-  <!-- Add the 5th one here when you have it -->
-  <a href="#" class="mobile-contact-btn" data-contact="fifth">
-    <img src="svg/fifth.svg" alt="" width="22" height="22">
   </a>
 </nav> 
 </body>
