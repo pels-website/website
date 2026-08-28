@@ -44,124 +44,137 @@
     </section>
 
 <section class="contacts">
-      <h2 data-i18n="contacts.heading">Contacts</h2>
+  <h2 data-i18n="contacts.heading">Contacts</h2>
 
-      <div class="contact-icons">
-        <!-- Telegram -->
-        <a href="#" class="contact-icon" data-contact="telegram" target="_blank" rel="noopener">
-          <img src="svg/telegram.svg" alt="" width="24" height="24">
-        </a>
-
-        <!-- WhatsApp -->
-        <a href="#" class="contact-icon" data-contact="whatsapp" target="_blank" rel="noopener">
-          <img src="svg/whatsapp.svg" alt="" width="24" height="24">
-        </a>
-
-        <!-- Email -->
-        <a href="#" class="contact-icon" data-contact="email">
-          <img src="svg/email.svg" alt="" width="24" height="24">
-        </a>
-
-        <!-- Phone -->
-        <a href="#" class="contact-icon" data-contact="phone">
-          <img src="svg/phone.svg" alt="" width="24" height="24">
-        </a>
+  <div class="contact-details">
+    <div class="contact-line">
+      <img src="svg/phone.svg" alt="" width="20" height="20">
+      <div>
+        <a href="#" data-contact="phone" class="contact-value">+370 600 00000</a>
+        <div class="contact-note" data-i18n="contacts.messengers">Telegram · WhatsApp · Viber</div>
       </div>
-    </section>
+    </div>
+
+    <div class="contact-line">
+      <img src="svg/email.svg" alt="" width="20" height="20">
+      <a href="#" data-contact="email" class="contact-value">you@example.com</a>
+    </div>
+
+    <div class="contact-line">
+      <img src="svg/pin.svg" alt="" width="20" height="20">
+      <div>
+        <span data-i18n="contacts.city">Vilnius, Lithuania</span>
+        <div class="contact-note" data-i18n="contacts.locationNote">Meetings in other places in Lithuania are also possible</div>
+      </div>
+    </div>
+  </div>
+</section>
   </main>
 
   <footer>
     <p data-i18n="footer.copyright">© 2026 Your Name</p>
   </footer>
 
-  <script>
-    const available = ['en', 'lt', 'ru'];
-    let contacts = {};           // will hold data/config.json
-    let currentLangData = {};  // current language translations
+<script>
+  const available = ['en', 'lt', 'ru'];
+  let contacts = {};
+  let currentLangData = {};
 
-    // Load the language-independent config
-    async function loadContacts() {
-      try {
-        const res = await fetch('data/contacts.json');
-        if (!res.ok) throw new Error('contacts not found');
-        contacts = await res.json();
-      } catch (e) {
-        console.warn('Could not load contacts.json', e);
-        contacts = {};
+  async function loadContacts() {
+    try {
+      const res = await fetch('data/contacts.json');
+      if (!res.ok) throw new Error('not found');
+      contacts = await res.json();
+    } catch (e) {
+      console.warn('Could not load contacts.json', e);
+      contacts = {};
+    }
+  }
+
+  async function loadLang(lang) {
+    try {
+      const res = await fetch(`data/${lang}.json`);
+      if (!res.ok) throw new Error('not found');
+      return await res.json();
+    } catch {
+      if (lang !== 'lt') return loadLang('lt');
+      return {};
+    }
+  }
+
+  function applyContacts() {
+    document.querySelectorAll('[data-contact]').forEach(el => {
+      const type = el.getAttribute('data-contact');
+
+      // Build correct href
+      if (type === 'telegram' && contacts.telegram) {
+        el.href = `https://t.me/${contacts.telegram}`;
+      } else if (type === 'whatsapp' && contacts.phone) {
+        el.href = `https://wa.me/${contacts.phone}`;
+      } else if (type === 'viber' && contacts.phone) {
+        el.href = `viber://chat?number=%2B${contacts.phone}`;
+      } else if (type === 'email' && contacts.email) {
+        el.href = `mailto:${contacts.email}`;
+      } else if (type === 'phone' && contacts.phone) {
+        el.href = `tel:+${contacts.phone}`;
       }
-    }
 
-    async function loadLang(lang) {
-      try {
-        const res = await fetch(`data/${lang}.json`);
-        if (!res.ok) throw new Error('not found');
-        return await res.json();
-      } catch {
-        if (lang !== 'lt') return loadLang('lt');
-        return {};
+      // Accessibility
+      const labelKey = `contacts.${type}Label`;
+      if (currentLangData[labelKey]) {
+        el.setAttribute('aria-label', currentLangData[labelKey]);
+        el.title = currentLangData[labelKey];
       }
-    }
-
-    async function setLanguage(lang) {
-      if (!available.includes(lang)) lang = 'lt';
-      const t = await loadLang(lang);
-
-      document.querySelectorAll('[data-i18n]').forEach(el => {
-        const key = el.getAttribute('data-i18n');
-        if (t[key] != null) el.textContent = t[key];
-      });
-
-      document.querySelectorAll('[data-i18n-alt]').forEach(el => {
-        const key = el.getAttribute('data-i18n-alt');
-        if (t[key] != null) el.alt = t[key];
-      });
-
-      document.documentElement.lang = lang;
-
-      document.querySelectorAll('.lang-btn').forEach(btn => {
-        btn.setAttribute('aria-pressed', btn.dataset.lang === lang ? 'true' : 'false');
-      });
-
-      localStorage.setItem('lang', lang);
-
-      // Build contact links from config + set accessibility labels
-      document.querySelectorAll('[data-contact]').forEach(el => {
-        const type = el.getAttribute('data-contact');
-
-        // Build href from contacts
-        if (contacts[type]) {
-          if (type === 'telegram') {
-            el.href = `https://t.me/${contacts.phone}`;
-          } else if (type === 'whatsapp') {
-            el.href = `https://wa.me/${contacts.phone}`;
-          } else if (type === 'viber') {
-            el.href = `https://viber.me/${contacts.phone}`;
-          } else if (type === 'email') {
-            el.href = `mailto:${contacts.email}`;
-          } else if (type === 'phone') {
-            el.href = `tel:+${contacts.phone}`;
-          }
-        }
-
-        // Accessibility label (from language file)
-        const labelKey = `contacts.${type}Label`;
-        if (currentLangData[labelKey]) {
-          el.setAttribute('aria-label', currentLangData[labelKey]);
-          el.title = currentLangData[labelKey];
-        }
-      });
-    }
-
-    document.querySelectorAll('.lang-btn').forEach(btn => {
-      btn.addEventListener('click', () => setLanguage(btn.dataset.lang));
     });
+  }
+
+  async function setLanguage(lang) {
+    if (!available.includes(lang)) lang = 'lt';
+
+    currentLangData = await loadLang(lang);
+
+    // Texts
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      if (currentLangData[key] != null) el.textContent = currentLangData[key];
+    });
+
+    // Image alts
+    document.querySelectorAll('[data-i18n-alt]').forEach(el => {
+      const key = el.getAttribute('data-i18n-alt');
+      if (currentLangData[key] != null) el.alt = currentLangData[key];
+    });
+
+    document.documentElement.lang = lang;
+
+    // Language buttons state
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.setAttribute('aria-pressed', btn.dataset.lang === lang ? 'true' : 'false');
+    });
+
+    localStorage.setItem('lang', lang);
+
+    // Update all contact links + labels
+    applyContacts();
+  }
+
+  // Language switcher clicks
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.addEventListener('click', () => setLanguage(btn.dataset.lang));
+  });
+
+  // Init
+  (async function init() {
+    await loadContacts();
 
     const saved = localStorage.getItem('lang');
     const browser = (navigator.language || 'lt').slice(0, 2);
     const start = available.includes(saved) ? saved :
                   available.includes(browser) ? browser : 'lt';
-    setLanguage(start);
-  </script>
+
+    await setLanguage(start);
+  })();
+</script>
 
  <!-- Mobile sticky contact bar -->
 <nav class="mobile-contacts" aria-label="Quick contacts">
