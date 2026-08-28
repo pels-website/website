@@ -108,7 +108,7 @@
 
       // Build correct href
       if (type === 'telegram' && contacts.telegram) {
-        el.href = `https://t.me/${contacts.telegram}`;
+        el.href = `https://t.me/${contacts.phone}`;
       } else if (type === 'whatsapp' && contacts.phone) {
         el.href = `https://wa.me/${contacts.phone}`;
       } else if (type === 'viber' && contacts.phone) {
