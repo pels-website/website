@@ -190,7 +190,8 @@ footer {
   justify-content: center;
   width: 48px;
   height: 48px;
-  border-radius: 50%;
+  border-radius: 5%;
+  color: var(--bg);
   background: rgba(255, 255, 255, 0.12);
   transition: background 0.2s, transform 0.15s;
 }
@@ -200,9 +201,17 @@ footer {
   transform: scale(0.92);
 }
 
+.mobile-contact-btn[data-contact="telegram"]  { background: rgb(75, 135, 170); }
+.mobile-contact-btn[data-contact="whatsapp"]  { background: rgb(88, 155, 105); }
+.mobile-contact-btn[data-contact="viber"]     { background: rgb(130, 120, 165); }
+.mobile-contact-btn[data-contact="phone"]     { background: rgb(175, 130, 80); }
+.mobile-contact-btn[data-contact="email"]     { background: rgb(110, 130, 155); }
+
 .mobile-contact-btn img {
   display: block;
-  /*filter: brightness(0) invert(1); /* makes icons white */
+  stroke-width: 1.5;
+  width: 20px;
+  height: 20px;
 }
 
 /* ========== Responsive ========== */
