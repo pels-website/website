@@ -202,7 +202,7 @@ footer {
 
 .mobile-contact-btn img {
   display: block;
-  filter: brightness(0) invert(1); /* makes icons white */
+  /*filter: brightness(0) invert(1); /* makes icons white */
 }
 
 /* ========== Responsive ========== */
