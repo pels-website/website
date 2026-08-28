@@ -1,4 +1,4 @@
 <svg width="36" height="36" viewBox="54 86 148 84" xmlns="http://www.w3.org/2000/svg">
-  <rect x="56" y="88" width="144" height="80" rx="0" fill="none" stroke="currentColor"/>
+  <rect x="56" y="88" width="144" height="80" rx="0" fill="none" stroke="currentColor" strokeWidth="3"/>
   <polyline points="56,88 128,148 200,88" fill="none" stroke="currentColor"/>
 </svg>
