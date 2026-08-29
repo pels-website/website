@@ -46,24 +46,35 @@
 <section class="contacts">
   <h2 data-i18n="contacts.heading">Contacts</h2>
 
-  <div class="contact-details">
-    <div class="contact-line">
-      <img src="svg/phone.svg" alt="" width="20" height="20">
-      <div>
-        <a href="#" data-contact="phone" class="contact-value">+370 600 00000</a>
-        <div class="contact-note" data-i18n="contacts.messengers">Telegram · WhatsApp · Viber</div>
+  <div class="contact-grid">
+    <!-- Phone & Messengers -->
+    <div class="contact-card">
+      <img src="svg/phone.svg" alt="" class="contact-icon-main" width="22" height="22">
+      <div class="contact-body">
+        <div class="phone-row">
+          <a href="#" data-contact="phone" class="contact-value phone-link">+370 600 00000</a>
+          <div class="messenger-chips">
+            <a href="#" data-contact="telegram" aria-label="Telegram"><img src="svg/telegram.svg" alt="" width="16" height="16"></a>
+            <a href="#" data-contact="whatsapp" aria-label="WhatsApp"><img src="svg/whatsapp.svg" alt="" width="16" height="16"></a>
+            <a href="#" data-contact="viber" aria-label="Viber"><img src="svg/viber.svg" alt="" width="16" height="16"></a>
+          </div>
+        </div>
       </div>
     </div>
 
-    <div class="contact-line">
-      <img src="svg/email.svg" alt="" width="20" height="20">
-      <a href="#" data-contact="email" class="contact-value">you@example.com</a>
-    </div>
+    <!-- Email -->
+    <a href="#" data-contact="email" class="contact-card contact-card-link">
+      <img src="svg/email.svg" alt="" class="contact-icon-main" width="22" height="22">
+      <div class="contact-body">
+        <span class="contact-value">you@example.com</span>
+      </div>
+    </a>
 
-    <div class="contact-line">
-      <img src="svg/location.svg" alt="" width="20" height="20">
-      <div>
-        <span data-i18n="contacts.city">Vilnius, Lithuania</span>
+    <!-- Location -->
+    <div class="contact-card contact-card-accent">
+      <img src="svg/location.svg" alt="" class="contact-icon-main" width="22" height="22">
+      <div class="contact-body">
+        <span class="contact-value" data-i18n="contacts.city">Vilnius, Lithuania</span>
         <div class="contact-note" data-i18n="contacts.locationNote">Meetings in other places in Lithuania are also possible</div>
       </div>
     </div>
