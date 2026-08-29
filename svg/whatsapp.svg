@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="-15 -15 60 60" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+<svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="15 15 60 60" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
   
   <!-- Bubble: 1 circle arc + 2 straight lines -->
   <!-- Center is at (42, 35), Radius 22. Tail points to bottom-left -->
