@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 100 100" fill="currentColor" stroke="none">
+  <!-- Phone receiver: built vertically, then rotated -->
+  <g transform="rotate(-35 50 50)">
+    <path d="
+      M 40 20
+      L 60 20
+      A 10 8 0 0 1 60 36
+      L 60 64
+      A 10 8 0 0 1 60 80
+      L 40 80
+      A 10 8 0 0 1 40 64
+      L 40 36
+      A 10 8 0 0 1 40 20
+      Z
+    "/>
+  </g>
+</svg>
