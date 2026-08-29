@@ -119,6 +119,92 @@ header h1 {
   box-shadow: 0 4px 12px var(--shadow-light);
 }
 
+/* ========== Hero / Bio Section Layout ========== */
+.hero-section {
+  margin-bottom: 2.5rem;
+}
+
+.hero-container {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.hero-photo {
+  width: 100%;
+  max-width: 200px;
+  height: auto;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px var(--shadow-light);
+  border: 1px solid var(--border);
+  justify-self: center;
+}
+
+.hero-bio {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.hero-bio h2 {
+  margin-bottom: 0.25rem;
+}
+
+.hero-intro {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: var(--text);
+}
+
+.hero-bullets {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 0.25rem;
+}
+
+.hero-bullets li {
+  position: relative;
+  padding-left: 1.2rem;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.hero-bullets li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  top: -0.1rem;
+  color: var(--accent);
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.hero-bullets strong {
+  color: var(--text);
+  margin-right: 0.3rem;
+}
+
+.hero-bullets span {
+  color: var(--text-muted);
+}
+
+/* Responsive adjustment for Hero */
+@media (max-width: 640px) {
+  .hero-container {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .hero-photo {
+    max-width: 170px;
+  }
+}
+
 /* Sections */
 section {
   margin-bottom: 2rem;
