@@ -1,17 +1,16 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="360" height="360" viewBox="0 0 100 100" fill="currentColor" stroke="none">
-  <!-- Phone receiver: built vertically, then rotated -->
-  <g transform="rotate(-35 50 50)">
-    <path d="
-      M 40 20
-      L 60 20
-      A 10 8 0 0 1 60 36
-      L 60 64
-      A 10 8 0 0 1 60 80
-      L 40 80
-      A 10 8 0 0 1 40 64
-      L 40 36
-      A 10 8 0 0 1 40 20
-      Z
-    "/>
-  </g>
+<svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Phone receiver: 8 segments, rotated -->
+  <path d="
+    M 40 15
+    L 60 15
+    L 65 25
+    L 65 55
+    L 70 65
+    L 60 85
+    L 40 85
+    L 35 75
+    L 35 45
+    L 30 35
+    Z
+  " transform="rotate(-35 50 50)"/>
 </svg>
