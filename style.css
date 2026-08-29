@@ -9,6 +9,12 @@
   --accent: #4a3f35;          /* dark warm brown for links */
   --contact-bar-bg: #3c2f2f;  /* sticky bar */
   --focus: #c4a574;           /* soft gold focus ring */
+
+  /* DRY Card & Highlight Palette */
+  --card-bg: #ffffff;
+  --burgundy: #5c2b32;
+  --burgundy-light: #f5ebeb;
+  --burgundy-border: #d4b8bc;
 }
 
 * {
@@ -26,7 +32,7 @@ body {
   color: var(--text);
   max-width: 700px;
   margin: 0 auto;
-  padding: 2rem 1.5rem;
+  padding: 2rem 1.5rem 6rem;   /* Reserved bottom padding for sticky bar */
   background: var(--bg);
 }
 
@@ -108,37 +114,108 @@ h2 {
   padding-bottom: 0.3rem;
 }
 
-/* Contacts – desktop icons */
-.contact-icons {
+/* ========== Contact Section Alignment (CSS Grid) ========== */
+.contact-grid {
   display: flex;
-  gap: 1.25rem;
-  flex-wrap: wrap;
+  flex-direction: column;
+  gap: 0.85rem;
   margin-top: 1rem;
 }
 
-.contact-icon {
+.contact-card {
+  display: grid;
+  grid-template-columns: 24px 1fr;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.9rem 1.1rem;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  transition: transform 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+  color: inherit;
+}
+
+.contact-card-link {
+  cursor: pointer;
+}
+
+.contact-card-link:hover {
+  text-decoration: none;
+  border-color: var(--accent);
+  transform: translateY(-1px);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
+}
+
+.contact-card-accent {
+  background: var(--burgundy-light);
+  border-color: var(--burgundy-border);
+}
+
+.contact-card-accent .contact-value {
+  color: var(--burgundy);
+  font-weight: 600;
+}
+
+.contact-icon-main {
+  display: block;
+  width: 22px;
+  height: 22px;
+}
+
+.contact-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.phone-row {
   display: flex;
   align-items: center;
-  justify-content: center;
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  background: #fff;
-  border: 1px solid var(--border);
-  transition: all 0.2s ease;
+  justify-content: space-between;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.phone-link {
+  font-weight: 600;
   color: var(--text);
 }
 
-.contact-icon:hover {
-  background: #f5f1ea;
-  border-color: #b8a99a;
-  transform: translateY(-2px);
+.phone-link:hover {
+  color: var(--accent);
 }
 
-.contact-icon img {
-  width: 24px;
-  height: 24px;
-  display: block;
+.messenger-chips {
+  display: flex;
+  gap: 0.4rem;
+  align-items: center;
+}
+
+.messenger-chip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 6px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  transition: background 0.15s, transform 0.15s;
+}
+
+.messenger-chip:hover {
+  background: #eee8e0;
+  transform: translateY(-1px);
+}
+
+.contact-value {
+  font-size: 1.05rem;
+}
+
+.contact-note {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  line-height: 1.35;
 }
 
 /* Links */
@@ -151,11 +228,11 @@ a:hover {
   text-decoration: underline;
 }
 
-/* Focus styles – important for accessibility */
+/* Focus styles – Accessibility */
 a:focus-visible,
 .lang-btn:focus-visible,
-.contact-icon:focus-visible,
-.mobile-contact-btn:focus-visible {
+.mobile-contact-btn:focus-visible,
+.messenger-chip:focus-visible {
   outline: 3px solid var(--focus);
   outline-offset: 3px;
 }
@@ -168,9 +245,9 @@ footer {
   color: var(--text-muted);
 }
 
-/* ========== Mobile sticky contact bar ========== */
+/* ========== Sticky Bottom Contact Bar (All Devices + Foldables) ========== */
 .mobile-contacts {
-  display: none;
+  display: flex;
   position: fixed;
   bottom: 0;
   left: 0;
@@ -182,6 +259,7 @@ footer {
   justify-content: space-around;
   align-items: center;
   box-shadow: 0 -2px 12px rgba(0,0,0,0.25);
+  transition: all 0.25s ease;
 }
 
 .mobile-contact-btn {
@@ -190,7 +268,7 @@ footer {
   justify-content: center;
   width: 48px;
   height: 48px;
-  border-radius: 5%;
+  border-radius: 8px;
   color: var(--bg);
   background: rgba(255, 255, 255, 0.12);
   transition: background 0.2s, transform 0.15s;
@@ -209,24 +287,22 @@ footer {
 
 .mobile-contact-btn img {
   display: block;
-  stroke-width: 1.5;
   width: 20px;
   height: 20px;
 }
 
-/* ========== Responsive ========== */
-@media (max-width: 640px) {
+/* Floating pill format for wider viewports & unfolded foldables */
+@media (min-width: 641px) {
   .mobile-contacts {
-    display: flex;
-  }
-
-  body {
-    padding-bottom: 5.5rem; /* space for the sticky bar */
-  }
-
-  .lang-btn {
-    min-height: 44px;
-    min-width: 44px;
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+    bottom: 1.25rem;
+    width: max-content;
+    gap: 0.75rem;
+    padding: 0.6rem 1.25rem;
+    border-radius: 30px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.3);
   }
 }
 
