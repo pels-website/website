@@ -2,19 +2,37 @@
    Dyslexia-friendly + professional palette
    ========================================= */
 :root {
-  --bg: #f7f4ef;              /* warm soft off-white */
-  --text: #2c2420;            /* soft dark brown */
-  --text-muted: #5c534c;      /* secondary text */
-  --border: #ddd5cb;          /* warm soft border */
-  --accent: #4a3f35;          /* dark warm brown for links */
-  --contact-bar-bg: #3c2f2f;  /* sticky bar */
-  --focus: #c4a574;           /* soft gold focus ring */
+  /* Core Base Colors */
+  --bg: #f7f4ef;                /* Soft warm background */
+  --surface: #fcfbf7;           /* Warm cream surface (banished pure #fff) */
+  --surface-hover: #f5f1ea;     /* Warm hover fill */
+  --surface-active: #f0ebe3;    /* Pressed/active state */
+  --text: #2c2420;              /* Soft dark brown text */
+  --text-muted: #5c534c;        /* Secondary text */
+  --border: #ddd5cb;            /* Warm soft border */
+  --border-hover: #b8a99a;      /* Hover border */
+  --accent: #4a3f35;            /* Dark warm accent */
+  --focus: #c4a574;             /* Soft gold focus ring */
 
-  /* DRY Card & Highlight Palette */
-  --card-bg: #ffffff;
-  --burgundy: #5c2b32;
-  --burgundy-light: #f5ebeb;
-  --burgundy-border: #d4b8bc;
+  /* Contact Cards Palette */
+  --card-bg: #faf7f2;           /* Modified soft cream card background */
+
+  /* Platform & Pictogram Brand Colors */
+  --contact-bar-bg: #3c2f2f;
+  --brand-telegram: rgb(75, 135, 170);
+  --brand-whatsapp: rgb(88, 155, 105);
+  --brand-viber:    rgb(130, 120, 165);
+  --brand-phone:    rgb(175, 130, 80);
+  --brand-email:    rgb(110, 130, 155);
+  --brand-location: rgb(155, 110, 110);
+
+  /* Shared Overlays & Shadows */
+  --overlay-light: rgba(255, 255, 255, 0.12);
+  --overlay-active: rgba(255, 255, 255, 0.25);
+  --shadow-light: rgba(0, 0, 0, 0.08);
+  --shadow-card: rgba(0, 0, 0, 0.05);
+  --shadow-dark: rgba(0, 0, 0, 0.25);
+  --shadow-floating: rgba(0, 0, 0, 0.3);
 }
 
 * {
@@ -25,14 +43,14 @@
 
 body {
   font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  font-size: 1.125rem;        /* 18px – easier to read */
+  font-size: 1.125rem;
   line-height: 1.7;
   letter-spacing: 0.01em;
   word-spacing: 0.05em;
   color: var(--text);
   max-width: 700px;
   margin: 0 auto;
-  padding: 2rem 1.5rem 6rem;   /* Reserved bottom padding for sticky bar */
+  padding: 2rem 1.5rem 6rem;
   background: var(--bg);
 }
 
@@ -68,7 +86,7 @@ header h1 {
   padding: 0.35rem 0.55rem;
   border: 1px solid var(--border);
   border-radius: 6px;
-  background: #fff;
+  background: var(--surface);
   cursor: pointer;
   font-size: 0.8rem;
   line-height: 1;
@@ -81,13 +99,13 @@ header h1 {
 }
 
 .lang-btn[aria-pressed="true"] {
-  background: #f0ebe3;
-  border-color: #b8a99a;
+  background: var(--surface-active);
+  border-color: var(--border-hover);
   font-weight: 600;
 }
 
 .lang-btn:hover {
-  background: #f5f1ea;
+  background: var(--surface-hover);
 }
 
 /* Hero image */
@@ -98,7 +116,7 @@ header h1 {
   display: block;
   margin: 0 auto 2rem;
   border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  box-shadow: 0 4px 12px var(--shadow-light);
 }
 
 /* Sections */
@@ -114,7 +132,15 @@ h2 {
   padding-bottom: 0.3rem;
 }
 
-/* ========== Contact Section Alignment (CSS Grid) ========== */
+/* ========== Shared Brand Colors (DRY) ========== */
+[data-contact="telegram"] { background-color: var(--brand-telegram); }
+[data-contact="whatsapp"] { background-color: var(--brand-whatsapp); }
+[data-contact="viber"]    { background-color: var(--brand-viber); }
+[data-contact="phone"]    { background-color: var(--brand-phone); }
+[data-contact="email"]    { background-color: var(--brand-email); }
+[data-contact="location"] { background-color: var(--brand-location); }
+
+/* ========== Contact Section Grid ========== */
 .contact-grid {
   display: flex;
   flex-direction: column;
@@ -124,15 +150,21 @@ h2 {
 
 .contact-card {
   display: grid;
-  grid-template-columns: 24px 1fr;
+  grid-template-columns: 40px 1fr;
   align-items: center;
   gap: 1rem;
-  padding: 0.9rem 1.1rem;
+  padding: 0.85rem 1.1rem;
   background: var(--card-bg);
   border: 1px solid var(--border);
   border-radius: 8px;
-  transition: transform 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
   color: inherit;
+}
+
+.contact-card:hover {
+  border-color: var(--border-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px var(--shadow-card);
 }
 
 .contact-card-link {
@@ -141,25 +173,28 @@ h2 {
 
 .contact-card-link:hover {
   text-decoration: none;
-  border-color: var(--accent);
-  transform: translateY(-1px);
-  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
 }
 
-.contact-card-accent {
-  background: var(--burgundy-light);
-  border-color: var(--burgundy-border);
+/* Pictogram Box (Colorful Rounded Squares) */
+.pictogram-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  flex-shrink: 0;
+  transition: transform 0.15s ease;
 }
 
-.contact-card-accent .contact-value {
-  color: var(--burgundy);
-  font-weight: 600;
+.contact-card:hover .pictogram-box {
+  transform: scale(1.05);
 }
 
-.contact-icon-main {
+.pictogram-box img {
   display: block;
-  width: 22px;
-  height: 22px;
+  width: 20px;
+  height: 20px;
 }
 
 .contact-body {
@@ -195,17 +230,21 @@ h2 {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 30px;
-  height: 30px;
+  width: 28px;
+  height: 28px;
   border-radius: 6px;
-  background: var(--bg);
-  border: 1px solid var(--border);
-  transition: background 0.15s, transform 0.15s;
+  transition: transform 0.15s, opacity 0.15s;
 }
 
 .messenger-chip:hover {
-  background: #eee8e0;
   transform: translateY(-1px);
+  opacity: 0.9;
+}
+
+.messenger-chip img {
+  display: block;
+  width: 15px;
+  height: 15px;
 }
 
 .contact-value {
@@ -228,7 +267,7 @@ a:hover {
   text-decoration: underline;
 }
 
-/* Focus styles – Accessibility */
+/* Accessibility Focus States */
 a:focus-visible,
 .lang-btn:focus-visible,
 .mobile-contact-btn:focus-visible,
@@ -245,7 +284,7 @@ footer {
   color: var(--text-muted);
 }
 
-/* ========== Sticky Bottom Contact Bar (All Devices + Foldables) ========== */
+/* ========== Sticky Contact Bar ========== */
 .mobile-contacts {
   display: flex;
   position: fixed;
@@ -258,7 +297,7 @@ footer {
   padding-bottom: max(0.6rem, env(safe-area-inset-bottom));
   justify-content: space-around;
   align-items: center;
-  box-shadow: 0 -2px 12px rgba(0,0,0,0.25);
+  box-shadow: 0 -2px 12px var(--shadow-dark);
   transition: all 0.25s ease;
 }
 
@@ -270,20 +309,16 @@ footer {
   height: 48px;
   border-radius: 8px;
   color: var(--bg);
-  background: rgba(255, 255, 255, 0.12);
-  transition: background 0.2s, transform 0.15s;
+  transition: transform 0.15s, opacity 0.15s;
 }
 
 .mobile-contact-btn:active {
-  background: rgba(255, 255, 255, 0.25);
   transform: scale(0.92);
 }
 
-.mobile-contact-btn[data-contact="telegram"]  { background: rgb(75, 135, 170); }
-.mobile-contact-btn[data-contact="whatsapp"]  { background: rgb(88, 155, 105); }
-.mobile-contact-btn[data-contact="viber"]     { background: rgb(130, 120, 165); }
-.mobile-contact-btn[data-contact="phone"]     { background: rgb(175, 130, 80); }
-.mobile-contact-btn[data-contact="email"]     { background: rgb(110, 130, 155); }
+.mobile-contact-btn:hover {
+  opacity: 0.9;
+}
 
 .mobile-contact-btn img {
   display: block;
@@ -291,7 +326,7 @@ footer {
   height: 20px;
 }
 
-/* Floating pill format for wider viewports & unfolded foldables */
+/* Floating Pill Viewport Strategy (Desktop & Unfolded Foldables) */
 @media (min-width: 641px) {
   .mobile-contacts {
     left: 50%;
@@ -302,7 +337,7 @@ footer {
     gap: 0.75rem;
     padding: 0.6rem 1.25rem;
     border-radius: 30px;
-    box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+    box-shadow: 0 6px 20px var(--shadow-floating);
   }
 }
 
