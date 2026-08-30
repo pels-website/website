@@ -1,7 +1,8 @@
 {
   "meta.title": "Barrister | Criminal Law",
   "header.name": "Barrister [First Last]",
-  "header.tagline": "Criminal Defense Specialist • 45+ Years of Experience",
+  "header.tagline1": "Criminal Defense Specialist",
+  "header.tagline2": "45+ Years of Experience",
   "hero.alt": "Photo of Barrister",
   "about.heading": "About the Lawyer",
   "about.intro": "I am a barrister specializing in criminal law. Practicing in this field since 1978, I have over 45 years of professional experience, providing effective criminal defense.",
@@ -14,7 +15,7 @@
   "contacts.heading": "Contact Details",
   "contacts.emailLabel": "E-mail",
   "contacts.phoneLabel": "Telephone",
-  "contacts.workplace": "Lawyer's workplace is remote",
+  "contacts.workplace": "I work remotely",
   "contacts.locationNote": "Meetings in Vilnius and elsewhere in Lithuania by arrangement",
   "footer.copyright": "© 2026 Barrister [First Last]"
 }
