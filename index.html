@@ -75,7 +75,7 @@
           </div>
           <div class="contact-body">
             <div class="phone-row">
-              <a href="#" data-contact="phone" class="contact-value phone-link" data-i18n="contacts.phone_formatted"></a>
+              <a href="#" data-contact="phone" class="contact-value phone-link"></a>
               <div class="messenger-chips">
                 <a href="#" data-contact="telegram" class="messenger-chip" aria-label="Telegram" target="_blank" rel="noopener">
                   <img src="svg/telegram.svg" alt="" width="15" height="15">
@@ -194,6 +194,9 @@
           el.href = `mailto:${contacts.email}`;
         } else if (type === 'phone' && contacts.phone) {
           el.href = `tel:+${contacts.phone}`;
+          if (contacts.phone_formatted && el.classList.contains('phone-link')) {
+            el.textContent = contacts.phone_formatted;
+          }
         }
 
         const labelKey = `contacts.${type}Label`;
