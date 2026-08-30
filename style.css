@@ -4,7 +4,7 @@
 :root {
   /* Core Base Colors */
   --bg: #f7f4ef;                /* Soft warm background */
-  --surface: #fcfbf7;           /* Warm cream surface (banished pure #fff) */
+  --surface: #fcfbf7;           /* Warm cream surface */
   --surface-hover: #f5f1ea;     /* Warm hover fill */
   --surface-active: #f0ebe3;    /* Pressed/active state */
   --text: #2c2420;              /* Soft dark brown text */
@@ -32,13 +32,16 @@
   --shadow-light: rgba(0, 0, 0, 0.08);
   --shadow-card: rgba(0, 0, 0, 0.05);
   --shadow-dark: rgba(0, 0, 0, 0.25);
-  --shadow-floating: rgba(0, 0, 0, 0.3);
 }
 
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
@@ -72,24 +75,25 @@ header h1 {
   margin-bottom: 0.3rem;
 }
 
-/* Language switcher */
+/* Language switcher (Brown pill container) */
 .lang-switch {
   display: flex;
   gap: 0.35rem;
+  padding: 0.35rem;
+  background: var(--contact-bar-bg);
+  border-radius: 8px;
   flex-shrink: 0;
 }
 
 .lang-btn {
   display: flex;
   align-items: center;
-  gap: 0.3rem;
-  padding: 0.35rem 0.55rem;
-  border: 1px solid var(--border);
-  border-radius: 6px;
-  background: var(--surface);
+  justify-content: center;
+  padding: 0.35rem;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  background: transparent;
   cursor: pointer;
-  font-size: 0.8rem;
-  line-height: 1;
   transition: background 0.15s, border-color 0.15s;
 }
 
@@ -99,24 +103,12 @@ header h1 {
 }
 
 .lang-btn[aria-pressed="true"] {
-  background: var(--surface-active);
-  border-color: var(--border-hover);
-  font-weight: 600;
+  background: var(--overlay-active);
+  border-color: var(--focus);
 }
 
 .lang-btn:hover {
-  background: var(--surface-hover);
-}
-
-/* Hero image */
-.hero {
-  width: 100%;
-  max-width: 500px;
-  height: auto;
-  display: block;
-  margin: 0 auto 2rem;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px var(--shadow-light);
+  background: var(--overlay-light);
 }
 
 /* ========== Hero / Bio Section Layout ========== */
@@ -193,18 +185,6 @@ header h1 {
   color: var(--text-muted);
 }
 
-/* Responsive adjustment for Hero */
-@media (max-width: 640px) {
-  .hero-container {
-    grid-template-columns: 1fr;
-    gap: 1.25rem;
-  }
-
-  .hero-photo {
-    max-width: 170px;
-  }
-}
-
 /* Sections */
 section {
   margin-bottom: 2rem;
@@ -261,7 +241,7 @@ h2 {
   text-decoration: none;
 }
 
-/* Pictogram Box (Colorful Rounded Squares) */
+/* Pictogram Box */
 .pictogram-box {
   display: flex;
   align-items: center;
@@ -370,7 +350,7 @@ footer {
   color: var(--text-muted);
 }
 
-/* ========== Sticky Contact Bar ========== */
+/* ========== Navigation Bar / Sidebar ========== */
 .mobile-contacts {
   display: flex;
   position: fixed;
@@ -412,18 +392,54 @@ footer {
   height: 20px;
 }
 
-/* Floating Pill Viewport Strategy (Desktop & Unfolded Foldables) */
-@media (min-width: 641px) {
+.sidebar-divider {
+  display: none;
+}
+
+/* Desktop & Wide Screens: Left Sidebar Strategy */
+@media (min-width: 900px) {
+  body {
+    padding-left: calc(72px + 1.5rem);
+    padding-bottom: 2rem;
+  }
+
   .mobile-contacts {
-    left: 50%;
+    top: 0;
+    bottom: 0;
+    left: 0;
     right: auto;
-    transform: translateX(-50%);
-    bottom: 1.25rem;
-    width: max-content;
-    gap: 0.75rem;
-    padding: 0.6rem 1.25rem;
-    border-radius: 30px;
-    box-shadow: 0 6px 20px var(--shadow-floating);
+    width: 72px;
+    height: 100vh;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.85rem;
+    padding: 1.5rem 0.5rem;
+    box-shadow: 2px 0 12px var(--shadow-dark);
+    border-radius: 0;
+  }
+
+  .sidebar-divider {
+    display: block;
+    width: 32px;
+    height: 1px;
+    background: var(--overlay-light);
+    margin: 0.25rem 0;
+  }
+
+  .nav-anchor {
+    background: var(--overlay-light);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .hero-container {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .hero-photo {
+    max-width: 170px;
   }
 }
 
@@ -432,13 +448,5 @@ footer {
     flex-direction: column;
     align-items: center;
     text-align: center;
-  }
-
-  .lang-btn span {
-    display: none;
-  }
-
-  .lang-btn {
-    padding: 0.4rem;
   }
 }
