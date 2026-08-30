@@ -1,12 +1,20 @@
 {
-  "meta.title": "en...",
-  "header.name": "en...",
-  "header.tagline": "en...",
-  "hero.alt": "en...",
-  "about.heading": "en...",
-  "about.text": "en...",
+  "meta.title": "Barrister | Criminal Law",
+  "header.name": "Barrister [First Last]",
+  "header.tagline": "Criminal Defense Specialist • 45+ Years of Experience",
+  "hero.alt": "Photo of Attorney",
+  "about.heading": "About the Lawyer",
+  "about.intro": "I am an attorney specializing in criminal law. Practicing in this field since 1978, I have over 45 years of professional experience, providing effective criminal defense.",
+  "about.b1_title": "Extensive Experience:",
+  "about.b1_text": "Effective representation and defense across a broad range of criminal cases.",
+  "about.b2_title": "All Procedural Stages:",
+  "about.b2_text": "Full defense covering pre-trial investigation, appeal, and cassation proceedings.",
+  "about.b3_title": "Legal Services:",
+  "about.b3_text": "Consultations and defense in criminal law, administrative offenses, and civil claims in criminal proceedings.",
   "contacts.heading": "Contact Details",
   "contacts.emailLabel": "E-mail",
   "contacts.phoneLabel": "Telephone",
-  "footer.copyright": "en..."
+  "contacts.workplace": "Lawyer's workplace is remote",
+  "contacts.locationNote": "Meetings in Vilnius and elsewhere in Lithuania by arrangement",
+  "footer.copyright": "© 2026 Barrister [First Last]"
 }
