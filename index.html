@@ -19,226 +19,231 @@
         <p data-i18n="header.tagline">Short tagline or description</p>
       </div>
       <div class="lang-switch" role="group" aria-label="Language">
-        <button class="lang-btn" data-lang="en" aria-pressed="false">
+        <button class="lang-btn" data-lang="en" aria-pressed="false" aria-label="English" title="English">
           <img src="svg/en.svg" alt="" width="24" height="18">
-          <span>EN</span>
         </button>
-        <button class="lang-btn" data-lang="lt" aria-pressed="true">
+        <button class="lang-btn" data-lang="lt" aria-pressed="true" aria-label="Lietuvių" title="Lietuvių">
           <img src="svg/lt.svg" alt="" width="24" height="18">
-          <span>LT</span>
         </button>
-        <button class="lang-btn" data-lang="ru" aria-pressed="false">
+        <button class="lang-btn" data-lang="ru" aria-pressed="false" aria-label="Русский" title="Русский">
           <img src="svg/ru.svg" alt="" width="24" height="18">
-          <span>RU</span>
         </button>
       </div>
     </div>
   </header>
 
   <main>
-<!-- Hero Section: Photo + Scannable Bio -->
-  <section class="hero-section">
-    <div class="hero-container">
-      <img src="photo.png" alt="" class="hero-photo" data-i18n-alt="hero.alt">
-      
-      <div class="hero-bio">
-        <h2 data-i18n="about.heading">Apie Advokatą</h2>
+    <!-- Hero Section: Photo + Scannable Bio -->
+    <section class="hero-section" id="about">
+      <div class="hero-container">
+        <img src="photo.png" alt="" class="hero-photo" data-i18n-alt="hero.alt">
         
-        <p class="hero-intro" data-i18n="about.intro">
-          Esu advokatas, specializuojantis baudžiamosios teisės srityje. Baudžiamosios teisės srityje dirbu nuo 1978 m., tad turiu daugiau nei 45 metų praktikos stažą ir įgijau išsamią patirtį užtikrinant efektyvią gynybą.
-        </p>
+        <div class="hero-bio">
+          <h2 data-i18n="about.heading">Apie Advokatą</h2>
+          
+          <p class="hero-intro" data-i18n="about.intro">
+            Esu advokatas, specializuojantis baudžiamosios teisės srityje. Baudžiamosios teisės srityje dirbu nuo 1978 m., tad turiu daugiau nei 45 metų praktikos stažą ir įgijau išsamią patirtį užtikrinant efektyvią gynybą.
+          </p>
 
-        <ul class="hero-bullets">
-          <li>
-            <strong data-i18n="about.b1_title">Išsami patirtis:</strong>
-            <span data-i18n="about.b1_text">Efektyvus atstovavimas ir gynyba įvairiose baudžiamosiose bylose.</span>
-          </li>
-          <li>
-            <strong data-i18n="about.b2_title">Visos proceso stadijos:</strong>
-            <span data-i18n="about.b2_text">Nuo ikiteisminio tyrimo iki apeliacinio ir kasacinio nagrinėjimo.</span>
-          </li>
-          <li>
-            <strong data-i18n="about.b3_title">Teisinės paslaugos:</strong>
-            <span data-i18n="about.b3_text">Konsultacijos ir gynyba baudžiamosios teisės, administracinių nusižengimų bei civilinių ieškinių baudžiamajame procese klausimais.</span>
-          </li>
-        </ul>
+          <ul class="hero-bullets">
+            <li>
+              <strong data-i18n="about.b1_title">Išsami patirtis:</strong>
+              <span data-i18n="about.b1_text">Efektyvus atstovavimas ir gynyba įvairiose baudžiamosiose bylose.</span>
+            </li>
+            <li>
+              <strong data-i18n="about.b2_title">Visos proceso stadijos:</strong>
+              <span data-i18n="about.b2_text">Nuo ikiteisminio tyrimo iki apeliacinio ir kasacinio nagrinėjimo.</span>
+            </li>
+            <li>
+              <strong data-i18n="about.b3_title">Teisinės paslaugos:</strong>
+              <span data-i18n="about.b3_text">Konsultacijos ir gynyba baudžiamosios teisės, administracinių nusižengimų bei civilinių ieškinių baudžiamajame procese klausimais.</span>
+            </li>
+          </ul>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-<section class="contacts">
-  <h2 data-i18n="contacts.heading">Contacts</h2>
+    <!-- Contacts Section -->
+    <section class="contacts" id="contacts">
+      <h2 data-i18n="contacts.heading">Contacts</h2>
 
-  <div class="contact-grid">
-    <!-- Phone & Messengers -->
-    <div class="contact-card">
-      <div class="pictogram-box" data-contact="phone">
-        <img src="svg/phone.svg" alt="" width="20" height="20">
-      </div>
-      <div class="contact-body">
-        <div class="phone-row">
-          <a href="#" data-contact="phone" class="contact-value phone-link">+370 600 00000</a>
-          <div class="messenger-chips">
-            <a href="#" data-contact="telegram" class="messenger-chip" aria-label="Telegram">
-              <img src="svg/telegram.svg" alt="" width="15" height="15">
-            </a>
-            <a href="#" data-contact="whatsapp" class="messenger-chip" aria-label="WhatsApp">
-              <img src="svg/whatsapp.svg" alt="" width="15" height="15">
-            </a>
-            <a href="#" data-contact="viber" class="messenger-chip" aria-label="Viber">
-              <img src="svg/viber.svg" alt="" width="15" height="15">
-            </a>
+      <div class="contact-grid">
+        <!-- Phone & Messengers -->
+        <div class="contact-card">
+          <div class="pictogram-box" data-contact="phone">
+            <img src="svg/phone.svg" alt="" width="20" height="20">
+          </div>
+          <div class="contact-body">
+            <div class="phone-row">
+              <a href="#" data-contact="phone" class="contact-value phone-link">+370 600 00000</a>
+              <div class="messenger-chips">
+                <a href="#" data-contact="telegram" class="messenger-chip" aria-label="Telegram" target="_blank" rel="noopener">
+                  <img src="svg/telegram.svg" alt="" width="15" height="15">
+                </a>
+                <a href="#" data-contact="whatsapp" class="messenger-chip" aria-label="WhatsApp" target="_blank" rel="noopener">
+                  <img src="svg/whatsapp.svg" alt="" width="15" height="15">
+                </a>
+                <a href="#" data-contact="viber" class="messenger-chip" aria-label="Viber" target="_blank" rel="noopener">
+                  <img src="svg/viber.svg" alt="" width="15" height="15">
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Email -->
+        <a href="#" data-contact="email" class="contact-card contact-card-link">
+          <div class="pictogram-box" data-contact="email">
+            <img src="svg/email.svg" alt="" width="20" height="20">
+          </div>
+          <div class="contact-body">
+            <span class="contact-value">you@example.com</span>
+          </div>
+        </a>
+
+        <!-- Remote Location Requirement -->
+        <div class="contact-card">
+          <div class="pictogram-box" data-contact="location">
+            <img src="svg/location.svg" alt="" width="20" height="20">
+          </div>
+          <div class="contact-body">
+            <span class="contact-value" data-i18n="contacts.workplace">Advokato darbo vieta yra nuotolinė</span>
+            <div class="contact-note" data-i18n="contacts.locationNote">Susitikimai Vilniuje ir kitose Lietuvos vietose – pagal susitarimą</div>
           </div>
         </div>
       </div>
-    </div>
-
-    <!-- Email -->
-    <a href="#" data-contact="email" class="contact-card contact-card-link">
-      <div class="pictogram-box" data-contact="email">
-        <img src="svg/email.svg" alt="" width="20" height="20">
-      </div>
-      <div class="contact-body">
-        <span class="contact-value">you@example.com</span>
-      </div>
-    </a>
-
-    <!-- Location -->
-    <div class="contact-card">
-      <div class="pictogram-box" data-contact="location">
-        <img src="svg/location.svg" alt="" width="20" height="20">
-      </div>
-      <div class="contact-body">
-        <span class="contact-value" data-i18n="contacts.city">Vilnius, Lithuania</span>
-        <div class="contact-note" data-i18n="contacts.locationNote">Meetings in other places in Lithuania are also possible</div>
-      </div>
-    </div>
-  </div>
-</section>
+    </section>
   </main>
 
   <footer>
     <p data-i18n="footer.copyright">© 2026 Your Name</p>
   </footer>
 
-<script>
-  const available = ['en', 'lt', 'ru'];
-  let contacts = {};
-  let currentLangData = {};
+  <!-- Fixed Left Sidebar (Desktop) / Sticky Bottom Bar (Mobile) -->
+  <nav class="mobile-contacts" aria-label="Quick navigation and contacts">
+    <a href="#about" class="mobile-contact-btn nav-anchor" aria-label="About" title="About">
+      <img src="svg/profile.svg" alt="" width="20" height="20">
+    </a>
+    <a href="#contacts" class="mobile-contact-btn nav-anchor" aria-label="Contacts" title="Contacts">
+      <img src="svg/location.svg" alt="" width="20" height="20">
+    </a>
 
-  async function loadContacts() {
-    try {
-      const res = await fetch('data/contacts.json');
-      if (!res.ok) throw new Error('not found');
-      contacts = await res.json();
-    } catch (e) {
-      console.warn('Could not load contacts.json', e);
-      contacts = {};
-    }
-  }
+    <div class="sidebar-divider"></div>
 
-  async function loadLang(lang) {
-    try {
-      const res = await fetch(`data/${lang}.json`);
-      if (!res.ok) throw new Error('not found');
-      return await res.json();
-    } catch {
-      if (lang !== 'lt') return loadLang('lt');
-      return {};
-    }
-  }
-
-  function applyContacts() {
-    document.querySelectorAll('[data-contact]').forEach(el => {
-      const type = el.getAttribute('data-contact');
-
-      // Build correct href
-      if (type === 'telegram' && contacts.telegram) {
-        el.href = `https://t.me/${contacts.phone}`;
-      } else if (type === 'whatsapp' && contacts.phone) {
-        el.href = `https://wa.me/${contacts.phone}`;
-      } else if (type === 'viber' && contacts.phone) {
-        el.href = `viber://chat?number=%2B${contacts.phone}`;
-      } else if (type === 'email' && contacts.email) {
-        el.href = `mailto:${contacts.email}`;
-      } else if (type === 'phone' && contacts.phone) {
-        el.href = `tel:+${contacts.phone}`;
-      }
-
-      // Accessibility
-      const labelKey = `contacts.${type}Label`;
-      if (currentLangData[labelKey]) {
-        el.setAttribute('aria-label', currentLangData[labelKey]);
-        el.title = currentLangData[labelKey];
-      }
-    });
-  }
-
-  async function setLanguage(lang) {
-    if (!available.includes(lang)) lang = 'lt';
-
-    currentLangData = await loadLang(lang);
-
-    // Texts
-    document.querySelectorAll('[data-i18n]').forEach(el => {
-      const key = el.getAttribute('data-i18n');
-      if (currentLangData[key] != null) el.textContent = currentLangData[key];
-    });
-
-    // Image alts
-    document.querySelectorAll('[data-i18n-alt]').forEach(el => {
-      const key = el.getAttribute('data-i18n-alt');
-      if (currentLangData[key] != null) el.alt = currentLangData[key];
-    });
-
-    document.documentElement.lang = lang;
-
-    // Language buttons state
-    document.querySelectorAll('.lang-btn').forEach(btn => {
-      btn.setAttribute('aria-pressed', btn.dataset.lang === lang ? 'true' : 'false');
-    });
-
-    localStorage.setItem('lang', lang);
-
-    // Update all contact links + labels
-    applyContacts();
-  }
-
-  // Language switcher clicks
-  document.querySelectorAll('.lang-btn').forEach(btn => {
-    btn.addEventListener('click', () => setLanguage(btn.dataset.lang));
-  });
-
-  // Init
-  (async function init() {
-    await loadContacts();
-
-    const saved = localStorage.getItem('lang');
-    const browser = (navigator.language || 'lt').slice(0, 2);
-    const start = available.includes(saved) ? saved :
-                  available.includes(browser) ? browser : 'lt';
-
-    await setLanguage(start);
-  })();
-</script>
-
- <!-- Mobile sticky contact bar -->
-<nav class="mobile-contacts" aria-label="Quick contacts">
-  <a href="#" class="mobile-contact-btn" data-contact="telegram" target="_blank" rel="noopener">
-    <img src="svg/telegram.svg" alt="" width="22" height="22">
-  </a>
-  <a href="#" class="mobile-contact-btn" data-contact="whatsapp" target="_blank" rel="noopener">
-    <img src="svg/whatsapp.svg" alt="" width="22" height="22">
-  </a>
-  <a href="#" class="mobile-contact-btn" data-contact="viber">
-    <img src="svg/viber.svg" alt="" width="22" height="22">
-  </a>
+    <a href="#" class="mobile-contact-btn" data-contact="telegram" target="_blank" rel="noopener">
+      <img src="svg/telegram.svg" alt="" width="20" height="20">
+    </a>
+    <a href="#" class="mobile-contact-btn" data-contact="whatsapp" target="_blank" rel="noopener">
+      <img src="svg/whatsapp.svg" alt="" width="20" height="20">
+    </a>
+    <a href="#" class="mobile-contact-btn" data-contact="viber" target="_blank" rel="noopener">
+      <img src="svg/viber.svg" alt="" width="20" height="20">
+    </a>
     <a href="#" class="mobile-contact-btn" data-contact="email">
-    <img src="svg/email.svg" alt="" width="22" height="22">
-  </a>
-  <a href="#" class="mobile-contact-btn" data-contact="phone">
-    <img src="svg/phone.svg" alt="" width="22" height="22">
-  </a>
-</nav> 
+      <img src="svg/email.svg" alt="" width="20" height="20">
+    </a>
+    <a href="#" class="mobile-contact-btn" data-contact="phone">
+      <img src="svg/phone.svg" alt="" width="20" height="20">
+    </a>
+  </nav>
+
+  <script>
+    const available = ['en', 'lt', 'ru'];
+    let contacts = {};
+    let currentLangData = {};
+
+    async function loadContacts() {
+      try {
+        const res = await fetch('data/contacts.json');
+        if (!res.ok) throw new Error('not found');
+        contacts = await res.json();
+      } catch (e) {
+        console.warn('Could not load contacts.json', e);
+        contacts = {};
+      }
+    }
+
+    async function loadLang(lang) {
+      try {
+        const res = await fetch(`data/${lang}.json`);
+        if (!res.ok) throw new Error('not found');
+        return await res.json();
+      } catch {
+        if (lang !== 'lt') return loadLang('lt');
+        return {};
+      }
+    }
+
+    function applyContacts() {
+      document.querySelectorAll('[data-contact]').forEach(el => {
+        const type = el.getAttribute('data-contact');
+
+        if (type === 'telegram' && contacts.phone) {
+          el.href = `https://t.me/${contacts.phone}`;
+          el.target = '_blank';
+          el.rel = 'noopener';
+        } else if (type === 'whatsapp' && contacts.phone) {
+          el.href = `https://wa.me/${contacts.phone}`;
+          el.target = '_blank';
+          el.rel = 'noopener';
+        } else if (type === 'viber' && contacts.phone) {
+          el.href = `viber://chat?number=%2B${contacts.phone}`;
+          el.target = '_blank';
+          el.rel = 'noopener';
+        } else if (type === 'email' && contacts.email) {
+          el.href = `mailto:${contacts.email}`;
+        } else if (type === 'phone' && contacts.phone) {
+          el.href = `tel:+${contacts.phone}`;
+        }
+
+        const labelKey = `contacts.${type}Label`;
+        if (currentLangData[labelKey]) {
+          el.setAttribute('aria-label', currentLangData[labelKey]);
+          el.title = currentLangData[labelKey];
+        }
+      });
+    }
+
+    async function setLanguage(lang) {
+      if (!available.includes(lang)) lang = 'lt';
+
+      currentLangData = await loadLang(lang);
+
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (currentLangData[key] != null) el.textContent = currentLangData[key];
+      });
+
+      document.querySelectorAll('[data-i18n-alt]').forEach(el => {
+        const key = el.getAttribute('data-i18n-alt');
+        if (currentLangData[key] != null) el.alt = currentLangData[key];
+      });
+
+      document.documentElement.lang = lang;
+
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.setAttribute('aria-pressed', btn.dataset.lang === lang ? 'true' : 'false');
+      });
+
+      localStorage.setItem('lang', lang);
+
+      applyContacts();
+    }
+
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.addEventListener('click', () => setLanguage(btn.dataset.lang));
+    });
+
+    (async function init() {
+      await loadContacts();
+
+      const saved = localStorage.getItem('lang');
+      const browser = (navigator.language || 'lt').slice(0, 2);
+      const start = available.includes(saved) ? saved :
+                    available.includes(browser) ? browser : 'lt';
+
+      await setLanguage(start);
+    })();
+  </script>
 </body>
 </html>
