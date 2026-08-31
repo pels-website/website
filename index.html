@@ -205,19 +205,13 @@
   let contacts = {};
   let currentLangData = {};
 
-  function getTranslation(obj, keyPath) {
-    if (!obj || !keyPath) return null;
-    if (obj[keyPath] !== undefined) return obj[keyPath];
-    return keyPath.split('.').reduce((prev, curr) => (prev && prev[curr] !== undefined) ? prev[curr] : null, obj);
-  }
-
   async function loadContacts() {
     try {
       const res = await fetch('data/contacts.json');
-      if (!res.ok) throw new Error(`contacts.json status ${res.status}`);
+      if (!res.ok) throw new Error('not found');
       contacts = await res.json();
     } catch (e) {
-      console.error('Failed to load contacts.json:', e);
+      console.warn('Could not load contacts.json', e);
       contacts = {};
     }
   }
@@ -225,10 +219,9 @@
   async function loadLang(lang) {
     try {
       const res = await fetch(`data/${lang}.json`);
-      if (!res.ok) throw new Error(`data/${lang}.json status ${res.status}`);
+      if (!res.ok) throw new Error('not found');
       return await res.json();
-    } catch (e) {
-      console.error(`Failed to load language file data/${lang}.json:`, e);
+    } catch {
       if (lang !== 'lt') return loadLang('lt');
       return {};
     }
@@ -239,7 +232,6 @@
       const type = el.getAttribute('data-contact');
 
       if (type === 'telegram' && contacts.phone) {
-        // Deep link forces mobile device to open Telegram app directly
         el.href = contacts.telegram 
           ? `tg://resolve?domain=${contacts.telegram}` 
           : `tg://resolve?phone=${contacts.phone}`;
@@ -261,10 +253,9 @@
       }
 
       const labelKey = `contacts.${type}Label`;
-      const translatedLabel = getTranslation(currentLangData, labelKey);
-      if (translatedLabel) {
-        el.setAttribute('aria-label', translatedLabel);
-        el.title = translatedLabel;
+      if (currentLangData[labelKey]) {
+        el.setAttribute('aria-label', currentLangData[labelKey]);
+        el.title = currentLangData[labelKey];
       }
     });
 
@@ -282,14 +273,16 @@
 
     document.querySelectorAll('[data-i18n]').forEach(el => {
       const key = el.getAttribute('data-i18n');
-      const val = getTranslation(currentLangData, key);
-      if (val !== null) el.textContent = val;
+      if (currentLangData[key] != null) {
+        el.textContent = currentLangData[key];
+      }
     });
 
     document.querySelectorAll('[data-i18n-alt]').forEach(el => {
       const key = el.getAttribute('data-i18n-alt');
-      const val = getTranslation(currentLangData, key);
-      if (val !== null) el.alt = val;
+      if (currentLangData[key] != null) {
+        el.alt = currentLangData[key];
+      }
     });
 
     document.documentElement.lang = lang;
@@ -322,5 +315,5 @@
     await setLanguage(start);
   })();
 </script>
-  </body>
+</body>
 </html>
