@@ -28,18 +28,26 @@
   <link rel="shortcut icon" href="/favicon/favicon.ico" />
   <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
   <link rel="manifest" href="/favicon/site.webmanifest" />
+  
+<!-- Allows Google Search & Google Discover to show full-size preview images -->
+<meta name="robots" content="index, follow, max-image-preview:large">
 
+<meta name="description" content="Baudžiamosios teisės advokatas, turintis daugiau nei 45 m. praktikos stažą.">
+
+<!-- Google Structured Data (JSON-LD) -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Attorney",
+  "@type": "LegalService",
   "name": "Vardas Pavardė",
+  "image": "https://yourdomain.lt/og-image.jpg",
   "description": "Criminal defense attorney in Lithuania with over 45 years of experience.",
   "knowsLanguage": ["lt", "ru", "en"],
   "areaServed": {
     "@type": "Country",
     "name": "Lithuania"
   },
+  "url": "https://yourdomain.lt/",
   "telephone": "+37060000000",
   "email": "you@example.com"
 }
