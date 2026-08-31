@@ -3,13 +3,48 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title data-i18n="meta.title">Your Name / Project</title>
+  <!-- Open Graph / Social Media Preview -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://website.ivoev.workers.dev/">
+<meta property="og:title" content="Advokatas Vardas Pavardė | Baudžiamoji teisė">
+<meta property="og:description" content="Baudžiamosios teisės advokatas, turintis daugiau nei 45 m. praktikos stažą.">
+<meta property="og:image" content="https://website.ivoev.workers.dev/preview-image.jpg">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Advokatas Vardas Pavardė | Baudžiamoji teisė">
+<meta name="twitter:description" content="Baudžiamosios teisės advokatas, turintis daugiau nei 45 m. praktikos stažą.">
+<meta name="twitter:image" content="https://website.ivoev.workers.dev/preview-image.jpg">
+
+<link rel="alternate" hreflang="lt" href="https://website.ivoev.workers.dev/?lang=lt" />
+<link rel="alternate" hreflang="en" href="https://website.ivoev.workers.dev/?lang=en" />
+<link rel="alternate" hreflang="ru" href="https://website.ivoev.workers.dev/?lang=ru" />
+<link rel="alternate" hreflang="x-default" href="https://website.ivoev.workers.dev/" />
+  
+  <title data-i18n="meta.title"></title>
   <link rel="stylesheet" href="style.css">
   <link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96" />
   <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
   <link rel="shortcut icon" href="/favicon/favicon.ico" />
   <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
   <link rel="manifest" href="/favicon/site.webmanifest" />
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Attorney",
+  "name": "Vardas Pavardė",
+  "description": "Criminal defense attorney in Lithuania with over 45 years of experience.",
+  "knowsLanguage": ["lt", "ru", "en"],
+  "areaServed": {
+    "@type": "Country",
+    "name": "Lithuania"
+  },
+  "telephone": "+37060000000",
+  "email": "you@example.com"
+}
+</script>
+  
 </head>
 <body>
   <header>
@@ -237,16 +272,22 @@
       btn.addEventListener('click', () => setLanguage(btn.dataset.lang));
     });
 
-    (async function init() {
-      await loadContacts();
+// Replace the initialization block at the bottom of index.html
+(async function init() {
+  await loadContacts();
 
-      const saved = localStorage.getItem('lang');
-      const browser = (navigator.language || 'lt').slice(0, 2);
-      const start = available.includes(saved) ? saved :
-                    available.includes(browser) ? browser : 'lt';
+  const urlParams = new URLSearchParams(window.location.search);
+  const urlLang = urlParams.get('lang');
+  const saved = localStorage.getItem('lang');
+  const browser = (navigator.language || 'lt').slice(0, 2);
 
-      await setLanguage(start);
-    })();
+  // 1. URL parameter (?lang=en) -> 2. Saved preference -> 3. Browser lang -> 4. Default 'lt'
+  const start = available.includes(urlLang) ? urlLang :
+                available.includes(saved) ? saved :
+                available.includes(browser) ? browser : 'lt';
+
+  await setLanguage(start);
+})();
   </script>
 </body>
 </html>
