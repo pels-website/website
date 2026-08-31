@@ -13,17 +13,15 @@
 ### 1. Google PageSpeed Insights
 - **URL инструмента:** https://pagespeed.web.dev/
 - **Сфера проверки:** Техническое SEO, удобство для мобильных устройств, доступность (Accessibility), метрики Core Web Vitals и базовая структура HTML-метатегов.
-- **Целевой URL:** Основной адрес сайта (`https://website.ivoev.workers.dev/`).
 
 ### 2. Google Rich Results Test
 - **URL инструмента:** https://search.google.com/test/rich-results
 - **Сфера проверки:** Валидация микроразметки JSON-LD (`LegalService` / Schema.org) и извлечение данных для Графа знаний Google и ИИ-алгоритмов.
-- **Целевой URL:** Основной адрес сайта (`[https://website.ivoev.workers.dev/](https://website.ivoev.workers.dev/)/`).
 
 ### 3. Merkle Hreflang Testing Tool
 - **URL инструмента:** https://technicalseo.com/tools/hreflang/
 - **Сфера проверки:** Проверка перекрестных языковых тегов `hreflang` для параметров запроса (`?lang=lt`, `?lang=en`, `?lang=ru`).
-- **Целевой URL:** Страницы с языковыми параметрами https://website.ivoev.workers.dev/?lang=lt, https://website.ivoev.workers.dev/?lang=ru, https://website.ivoev.workers.dev/?lang=en
+- **Целевой URL:** Страницы с языковыми параметрами https://website.ivoev.workers.dev/?lang=lt, https://website.ivoev.workers.dev/?lang=ru и https://website.ivoev.workers.dev/?lang=en
 
 ### 4. Ручная проверка читаемости для ИИ (`llms.txt`)
 - **Сфера проверки:** Подтверждение отдачи чистого текста для поисковых ИИ-сканеров и языковых моделей (LLM).
