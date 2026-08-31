@@ -200,13 +200,11 @@
       <img src="svg/phone.svg" alt="" width="20" height="20">
     </a>
   </nav>
-
-  <script>
+<script>
   const available = ['en', 'lt', 'ru'];
   let contacts = {};
   let currentLangData = {};
 
-  // Helper to resolve both nested ("header.name") and flat ("header.name") JSON keys
   function getTranslation(obj, keyPath) {
     if (!obj || !keyPath) return null;
     if (obj[keyPath] !== undefined) return obj[keyPath];
@@ -216,10 +214,10 @@
   async function loadContacts() {
     try {
       const res = await fetch('data/contacts.json');
-      if (!res.ok) throw new Error('not found');
+      if (!res.ok) throw new Error(`contacts.json status ${res.status}`);
       contacts = await res.json();
     } catch (e) {
-      console.warn('Could not load contacts.json', e);
+      console.error('Failed to load contacts.json:', e);
       contacts = {};
     }
   }
@@ -227,9 +225,10 @@
   async function loadLang(lang) {
     try {
       const res = await fetch(`data/${lang}.json`);
-      if (!res.ok) throw new Error('not found');
+      if (!res.ok) throw new Error(`data/${lang}.json status ${res.status}`);
       return await res.json();
-    } catch {
+    } catch (e) {
+      console.error(`Failed to load language file data/${lang}.json:`, e);
       if (lang !== 'lt') return loadLang('lt');
       return {};
     }
@@ -240,17 +239,18 @@
       const type = el.getAttribute('data-contact');
 
       if (type === 'telegram' && contacts.phone) {
-        el.href = `https://t.me/${contacts.phone}`;
-        el.target = '_blank';
-        el.rel = 'noopener';
+        // Deep link forces mobile device to open Telegram app directly
+        el.href = contacts.telegram 
+          ? `tg://resolve?domain=${contacts.telegram}` 
+          : `tg://resolve?phone=${contacts.phone}`;
+        el.removeAttribute('target');
       } else if (type === 'whatsapp' && contacts.phone) {
         el.href = `https://wa.me/${contacts.phone}`;
         el.target = '_blank';
         el.rel = 'noopener';
       } else if (type === 'viber' && contacts.phone) {
         el.href = `viber://chat?number=%2B${contacts.phone}`;
-        el.target = '_blank';
-        el.rel = 'noopener';
+        el.removeAttribute('target');
       } else if (type === 'email' && contacts.email) {
         el.href = `mailto:${contacts.email}`;
       } else if (type === 'phone' && contacts.phone) {
@@ -322,5 +322,5 @@
     await setLanguage(start);
   })();
 </script>
-</body>
+  </body>
 </html>
