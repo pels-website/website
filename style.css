@@ -19,13 +19,7 @@
 
   /* Platform & Pictogram Brand Colors */
   --contact-bar-bg: #3c2f2f;
-  /*--brand-telegram: rgb(75, 135, 170);
-  --brand-whatsapp: rgb(88, 155, 105);
-  --brand-viber:    rgb(130, 120, 165);
-  --brand-phone:    rgb(175, 130, 80);
-  --brand-email:    rgb(110, 130, 155);
-  --brand-location: rgb(155, 110, 110);*/
-  --brand-location: #9E1B42; /* Rich Crimson (Replaces faded brown/burgundy) */
+  --brand-location: #9E1B42; /* Rich Crimson */
   --brand-phone:    #1C5D42; /* Deep Jade Green */
   --brand-email:    #1B365D; /* Executive Slate Navy */
   --brand-whatsapp: #0E6B47; /* Deep Forest Emerald */
@@ -204,13 +198,13 @@ h2 {
   padding-bottom: 0.3rem;
 }
 
-/* ========== Shared Brand Colors (DRY) ========== */
-[data-contact="telegram"] { background-color: var(--brand-telegram); }
-[data-contact="whatsapp"] { background-color: var(--brand-whatsapp); }
-[data-contact="viber"]    { background-color: var(--brand-viber); }
-[data-contact="phone"]    { background-color: var(--brand-phone); }
-[data-contact="email"]    { background-color: var(--brand-email); }
-[data-contact="location"] { background-color: var(--brand-location); }
+/* ========== Shared Brand Colors (Scoped DRY) ========== */
+:is(.pictogram-box, .messenger-chip, .mobile-contact-btn)[data-contact="telegram"] { background-color: var(--brand-telegram); }
+:is(.pictogram-box, .messenger-chip, .mobile-contact-btn)[data-contact="whatsapp"] { background-color: var(--brand-whatsapp); }
+:is(.pictogram-box, .messenger-chip, .mobile-contact-btn)[data-contact="viber"]    { background-color: var(--brand-viber); }
+:is(.pictogram-box, .messenger-chip, .mobile-contact-btn)[data-contact="phone"]    { background-color: var(--brand-phone); }
+:is(.pictogram-box, .messenger-chip, .mobile-contact-btn)[data-contact="email"]    { background-color: var(--brand-email); }
+:is(.pictogram-box, .messenger-chip, .mobile-contact-btn)[data-contact="location"] { background-color: var(--brand-location); }
 
 /* ========== Contact Section Grid ========== */
 .contact-grid {
@@ -231,6 +225,10 @@ h2 {
   border-radius: 8px;
   transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
   color: inherit;
+}
+
+.contact-card-align-top {
+  align-items: flex-start;
 }
 
 .contact-card:hover {
@@ -292,6 +290,11 @@ h2 {
   color: var(--accent);
 }
 
+.email-link {
+  font-weight: 600;
+  color: var(--text);
+}
+
 .messenger-chips {
   display: flex;
   gap: 0.4rem;
@@ -321,6 +324,39 @@ h2 {
 
 .contact-value {
   font-size: 1.05rem;
+}
+
+.contact-intro-title {
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 0.1rem;
+}
+
+.contact-intro-sub {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  line-height: 1.4;
+  margin-bottom: 0.5rem;
+}
+
+.consult-list {
+  margin: 0 0 0.6rem 1.2rem;
+  padding: 0;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.consult-list li {
+  margin-bottom: 0.25rem;
+}
+
+.location-workplace {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  border-top: 1px solid var(--border);
+  padding-top: 0.4rem;
+  margin-top: 0.4rem;
+  line-height: 1.35;
 }
 
 .contact-note {
