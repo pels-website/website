@@ -19,12 +19,18 @@
 
   /* Platform & Pictogram Brand Colors */
   --contact-bar-bg: #3c2f2f;
-  --brand-telegram: rgb(75, 135, 170);
+  /*--brand-telegram: rgb(75, 135, 170);
   --brand-whatsapp: rgb(88, 155, 105);
   --brand-viber:    rgb(130, 120, 165);
   --brand-phone:    rgb(175, 130, 80);
   --brand-email:    rgb(110, 130, 155);
-  --brand-location: rgb(155, 110, 110);
+  --brand-location: rgb(155, 110, 110);*/
+  --brand-location: #9E1B42; /* Rich Crimson (Replaces faded brown/burgundy) */
+  --brand-phone:    #1C5D42; /* Deep Jade Green */
+  --brand-email:    #1B365D; /* Executive Slate Navy */
+  --brand-whatsapp: #0E6B47; /* Deep Forest Emerald */
+  --brand-telegram: #1D638B; /* Ocean Blue */
+  --brand-viber:    #5B2D73; /* Royal Velvet Purple */ 
 
   /* Shared Overlays & Shadows */
   --overlay-light: rgba(255, 255, 255, 0.12);
