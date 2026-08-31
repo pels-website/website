@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <!-- Deep website brown/burgundy drop shadow -->
+    <filter id="photo-shade" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="16" stdDeviation="30" flood-color="#6C001B" flood-opacity="0.22" />
+    </filter>
+
+    <!-- Soft radial background halo in website brown -->
+    <radialGradient id="ambient-shade" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#6C001B" stop-opacity="0.08" />
+      <stop offset="100%" stop-color="#6C001B" stop-opacity="0" />
+    </radialGradient>
+
+    <!-- Mask that creates a transparent cutout hole -->
+    <mask id="frame-cutout">
+      <!-- Everything white remains visible -->
+      <rect width="1200" height="630" fill="#FFFFFF" />
+      <!-- Everything black becomes 100% transparent -->
+      <rect x="410" y="65" width="380" height="500" rx="12" fill="#000000" />
+    </mask>
+  </defs>
+
+  <!-- Background Layer with Transparent Hole -->
+  <g mask="url(#frame-cutout)">
+    <!-- Cream Background -->
+    <rect width="1200" height="630" fill="#FAF6F0" />
+    <!-- Ambient Center Shade -->
+    <circle cx="600" cy="315" r="400" fill="url(#ambient-shade)" />
+  </g>
+
+  <!-- Frame Border with Drop Shadow (Fill is transparent) -->
+  <rect x="410" y="65" width="380" height="500" rx="12" fill="none" stroke="#6C001B" stroke-width="2" stroke-opacity="0.25" filter="url(#photo-shade)" />
+</svg>
