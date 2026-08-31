@@ -15,7 +15,12 @@
   "contacts.heading": "Контактная информация",
   "contacts.emailLabel": "Электронная почта",
   "contacts.phoneLabel": "Телефон",
-  "contacts.workplace": "Место работы адвоката — удаленное",
-  "contacts.locationNote": "Встречи в Вильнюсе и других городах Литвы — по договоренности",
+  "contacts.intro1": "Бесплатная первичная консультация по телефону (до 15 мин.)",
+  "contacts.intro2": "Нажмите, чтобы позвонить — мы кратко обсудим вашу ситуацию и определим дальнейшие шаги.",
+  "consult_in_person_title": "Лично",
+  "consult_in_person_desc": "Встречи в Вильнюсе и других городах Литвы — по договоренности",
+  "consult_online_title": "Онлайн / Видео",
+  "consult_online_desc": "Zoom, WhatsApp, Viber, Telegram или по телефону",
+  "contacts.workplace": "Рабочее место адвоката — удаленное"
   "footer.copyright": "© 2026 Адвокат [Имя Фамилия]"
 }
