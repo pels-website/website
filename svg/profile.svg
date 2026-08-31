@@ -4,6 +4,6 @@
   
   <!-- Connected path: quarter circle + horizontal line + quarter circle -->
   <!-- Center at (0, 66) for first arc, (30, 66) for second arc, radius 25 -->
-  <path d="M -25 66 A 25 25 0 0 1 0 41 L 30 41 A 25 25 0 0 1 55 66" 
+  <path d="M -40 66 A 25 25 0 0 1 0 41 L 15 41 A 25 25 0 0 1 40 66" 
          stroke-linecap="round"/>
 </svg>
