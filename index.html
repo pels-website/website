@@ -111,12 +111,12 @@
       <div class="contact-grid">
         <!-- Phone & Messengers -->
         <div class="contact-card">
-          <div class="pictogram-box" data-contact="phone">
+          <a href="#" class="pictogram-box" data-contact="phone">
             <img src="svg/phone.svg" alt="" width="20" height="20">
-          </div>
+          </a>
           <div class="contact-body">
             <div class="phone-row">
-              <a href="#" class="contact-value phone-link"></a>
+              <a href="#" data-contact="phone" class="contact-value phone-link"></a>
               <div class="messenger-chips">
                 <a href="#" data-contact="telegram" class="messenger-chip" aria-label="Telegram" target="_blank" rel="noopener">
                   <img src="svg/telegram.svg" alt="" width="15" height="15">
@@ -133,7 +133,7 @@
         </div>
 
         <!-- Email -->
-        <a href="#" class="contact-card contact-card-link">
+        <a href="#" data-contact="email" class="contact-card contact-card-link">
           <div class="pictogram-box" data-contact="email">
             <img src="svg/email.svg" alt="" width="20" height="20">
           </div>
@@ -248,8 +248,8 @@
           el.href = `mailto:${contacts.email}`;
         } else if (type === 'phone' && contacts.phone) {
           el.href = `tel:+${contacts.phone}`;
-          if (contacts.phone_formatted && el.classList.contains('phone-link')) {
-            el.textContent = contacts.phone_formatted;
+          if (el.classList.contains('phone-link')) {
+            el.textContent = contacts.phone_formatted || `+${contacts.phone}`;
           }
         }
 
