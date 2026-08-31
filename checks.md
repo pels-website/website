@@ -5,7 +5,7 @@
 
 ## Порядок действий
 1. Откройте веб-интерфейс каждого из указанных ниже инструментов.
-2. Введите URL целевого сайта (например, `https://website.ivoev.workers.dev/`).
+2. Введите URL целевого сайта https://website.ivoev.workers.dev/.
 3. Запустите проверку и убедитесь, что показатели соответствуют нормам SEO и микроразметки.
 
 ## Спецификация инструментов
@@ -23,9 +23,8 @@
 ### 3. Merkle Hreflang Testing Tool
 - **URL инструмента:** https://technicalseo.com/tools/hreflang/
 - **Сфера проверки:** Проверка перекрестных языковых тегов `hreflang` для параметров запроса (`?lang=lt`, `?lang=en`, `?lang=ru`).
-- **Целевой URL:** Страницы с языковыми параметрами.
+- **Целевой URL:** Страницы с языковыми параметрами https://website.ivoev.workers.dev/?lang=lt, https://website.ivoev.workers.dev/?lang=ru, https://website.ivoev.workers.dev/?lang=en
 
 ### 4. Ручная проверка читаемости для ИИ (`llms.txt`)
-- **URL инструмента:** `[https://yourdomain.lt/llms.txt](https://website.ivoev.workers.dev/llms.txt)`
 - **Сфера проверки:** Подтверждение отдачи чистого текста для поисковых ИИ-сканеров и языковых моделей (LLM).
-- **Действие:** Перейдите по адресу `https://website.ivoev.workers.dev/llms.txt` в обычном браузере для проверки исходного текстового вывода.
+- **Действие:** Перейдите по адресу https://website.ivoev.workers.dev/llms.txt в обычном браузере для проверки исходного текстового вывода.
