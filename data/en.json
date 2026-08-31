@@ -15,7 +15,11 @@
   "contacts.heading": "Contact Details",
   "contacts.emailLabel": "E-mail",
   "contacts.phoneLabel": "Telephone",
+  "contacts.locationNote": "Free 15-min call",
+  "consult_in_person_title": "In-person",
+  "consult_in_person_desc": "Meetings in Vilnius and elsewhere in Lithuania by arrangement",
+  "consult_online_title": "Online / Video",
+  "consult_online_desc": "Zoom, WhatsApp, Viber, Telegram or phone"
   "contacts.workplace": "I work remotely",
-  "contacts.locationNote": "Meetings in Vilnius and elsewhere in Lithuania by arrangement",
   "footer.copyright": "© 2026 Barrister [First Last]"
 }
