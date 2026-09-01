@@ -3,24 +3,25 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- Open Graph / Social Media Preview -->
+  <meta name="theme-color" content="#1a1a1a">
+
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://website.ivoev.workers.dev/">
-  <meta property="og:title" content="Advokatas Vardas Pavardė | Baudžiamoji teisė">
-  <meta property="og:description" content="Baudžiamosios teisės advokatas, turintis daugiau nei 45 m. praktikos stažą.">
-  <meta property="og:image" content="https://website.ivoev.workers.dev/preview-image.jpg">
-
-  <!-- Twitter Card -->
+  <meta property="og:url" content="">
+  <meta property="og:locale" content="">
+  <meta property="og:title" content="">
+  <meta property="og:description" content="">
+  <meta property="og:image" content="">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Advokatas Vardas Pavardė | Baudžiamoji teisė">
-  <meta name="twitter:description" content="Baudžiamosios teisės advokatas, turintis daugiau nei 45 m. praktikos stažą.">
-  <meta name="twitter:image" content="https://website.ivoev.workers.dev/preview-image.jpg">
 
-  <link rel="alternate" hreflang="lt" href="https://website.ivoev.workers.dev/?lang=lt" />
-  <link rel="alternate" hreflang="en" href="https://website.ivoev.workers.dev/?lang=en" />
-  <link rel="alternate" hreflang="ru" href="https://website.ivoev.workers.dev/?lang=ru" />
-  <link rel="alternate" hreflang="x-default" href="https://website.ivoev.workers.dev/" />
-  
+  <link rel="alternate" hreflang="lt" href="/?lang=lt" />
+  <link rel="alternate" hreflang="en" href="/?lang=en" />
+  <link rel="alternate" hreflang="ru" href="/?lang=ru" />
+  <link rel="alternate" hreflang="x-default" href="/" />
+  <link rel="canonical" href="" />
+
   <title data-i18n="meta.title"></title>
   <link rel="stylesheet" href="style.css">
   <link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96" />
@@ -28,30 +29,11 @@
   <link rel="shortcut icon" href="/favicon/favicon.ico" />
   <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
   <link rel="manifest" href="/favicon/site.webmanifest" />
-  
-  <!-- Allows Google Search & Google Discover to show full-size preview images -->
+
   <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="description" content="">
 
-  <meta name="description" content="Baudžiamosios teisės advokatas, turintis daugiau nei 45 m. praktikos stažą.">
-
-  <!-- Google Structured Data (JSON-LD) -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "LegalService",
-    "name": "Vardas Pavardė",
-    "image": "https://yourdomain.lt/og-image.jpg",
-    "description": "Criminal defense attorney in Lithuania with over 45 years of experience.",
-    "knowsLanguage": ["lt", "ru", "en"],
-    "areaServed": {
-      "@type": "Country",
-      "name": "Lithuania"
-    },
-    "url": "https://yourdomain.lt/",
-    "telephone": "+37060000000",
-    "email": "you@example.com"
-  }
-  </script>
+  <script type="application/ld+json">{}</script>
 </head>
 <body>
   <header>
@@ -76,16 +58,12 @@
   </header>
 
   <main>
-    <!-- Hero Section: Photo + Scannable Bio -->
     <section class="hero-section" id="about">
       <div class="hero-container">
-        <img src="photo.png" alt="" class="hero-photo" data-i18n-alt="hero.alt">
-        
+        <img src="photo.png" alt="" class="hero-photo" data-i18n-alt="hero.alt" fetchpriority="high" width="400" height="500">
         <div class="hero-bio">
           <h2 data-i18n="about.heading"></h2>
-          
           <p class="hero-intro" data-i18n="about.intro"></p>
-
           <ul class="hero-bullets">
             <li>
               <strong data-i18n="about.b1_title"></strong>
@@ -104,12 +82,9 @@
       </div>
     </section>
 
-    <!-- Contacts Section -->
     <section class="contacts" id="contacts">
-      <h2 data-i18n="contacts.heading">Contacts</h2>
-
+      <h2 data-i18n="contacts.heading"></h2>
       <div class="contact-grid">
-        <!-- Phone & Messengers -->
         <div class="contact-card">
           <a href="#" class="pictogram-box" data-contact="phone">
             <img src="svg/phone.svg" alt="" width="20" height="20">
@@ -118,13 +93,13 @@
             <div class="phone-row">
               <a href="#" data-contact="phone" class="contact-value phone-link"></a>
               <div class="messenger-chips">
-                <a href="#" data-contact="telegram" class="messenger-chip" aria-label="Telegram" target="_blank" rel="noopener">
+                <a href="#" data-contact="telegram" class="messenger-chip" aria-label="Telegram" target="_blank" rel="noopener noreferrer">
                   <img src="svg/telegram.svg" alt="" width="15" height="15">
                 </a>
-                <a href="#" data-contact="whatsapp" class="messenger-chip" aria-label="WhatsApp" target="_blank" rel="noopener">
+                <a href="#" data-contact="whatsapp" class="messenger-chip" aria-label="WhatsApp" target="_blank" rel="noopener noreferrer">
                   <img src="svg/whatsapp.svg" alt="" width="15" height="15">
                 </a>
-                <a href="#" data-contact="viber" class="messenger-chip" aria-label="Viber" target="_blank" rel="noopener">
+                <a href="#" data-contact="viber" class="messenger-chip" aria-label="Viber" target="_blank" rel="noopener noreferrer">
                   <img src="svg/viber.svg" alt="" width="15" height="15">
                 </a>
               </div>
@@ -132,7 +107,6 @@
           </div>
         </div>
 
-        <!-- Email -->
         <a href="#" data-contact="email" class="contact-card contact-card-link">
           <div class="pictogram-box" data-contact="email">
             <img src="svg/email.svg" alt="" width="20" height="20">
@@ -142,7 +116,6 @@
           </div>
         </a>
 
-        <!-- Remote Location & Consultation Requirement -->
         <div class="contact-card contact-card-align-top">
           <div class="pictogram-box" data-contact="location">
             <img src="svg/location.svg" alt="" width="20" height="20">
@@ -150,18 +123,16 @@
           <div class="contact-body">
             <span class="contact-value contact-intro-title" data-i18n="contacts.intro1"></span>
             <p class="contact-intro-sub" data-i18n="contacts.intro2"></p>
-            
             <ul class="consult-list">
               <li>
-                <strong data-i18n="consult_in_person_title"></strong>: 
+                <strong data-i18n="consult_in_person_title"></strong>:
                 <span data-i18n="consult_in_person_desc"></span>
               </li>
               <li>
-                <strong data-i18n="consult_online_title"></strong>: 
+                <strong data-i18n="consult_online_title"></strong>:
                 <span data-i18n="consult_online_desc"></span>
               </li>
             </ul>
-
             <div class="location-workplace" data-i18n="contacts.workplace"></div>
           </div>
         </div>
@@ -173,7 +144,6 @@
     <p data-i18n="footer.copyright"></p>
   </footer>
 
-  <!-- Fixed Left Sidebar (Desktop) / Sticky Bottom Bar (Mobile) -->
   <nav class="mobile-contacts" aria-label="Quick navigation and contacts">
     <a href="#about" class="mobile-contact-btn nav-anchor" aria-label="About" title="About">
       <img src="svg/profile.svg" alt="" width="20" height="20">
@@ -181,16 +151,14 @@
     <a href="#contacts" class="mobile-contact-btn nav-anchor" data-contact="location" aria-label="Contacts" title="Contacts">
       <img src="svg/location.svg" alt="" width="20" height="20">
     </a>
-
     <div class="sidebar-divider"></div>
-
-    <a href="#" class="mobile-contact-btn" data-contact="telegram" target="_blank" rel="noopener">
+    <a href="#" class="mobile-contact-btn" data-contact="telegram" target="_blank" rel="noopener noreferrer">
       <img src="svg/telegram.svg" alt="" width="20" height="20">
     </a>
-    <a href="#" class="mobile-contact-btn" data-contact="whatsapp" target="_blank" rel="noopener">
+    <a href="#" class="mobile-contact-btn" data-contact="whatsapp" target="_blank" rel="noopener noreferrer">
       <img src="svg/whatsapp.svg" alt="" width="20" height="20">
     </a>
-    <a href="#" class="mobile-contact-btn" data-contact="viber" target="_blank" rel="noopener">
+    <a href="#" class="mobile-contact-btn" data-contact="viber" target="_blank" rel="noopener noreferrer">
       <img src="svg/viber.svg" alt="" width="20" height="20">
     </a>
     <a href="#" class="mobile-contact-btn" data-contact="email">
@@ -200,136 +168,15 @@
       <img src="svg/phone.svg" alt="" width="20" height="20">
     </a>
   </nav>
-<script>
-  const available = ['en', 'lt', 'ru'];
-  let contacts = {};
-  let currentLangData = {};
 
-  async function loadContacts() {
-    try {
-      const res = await fetch('data/contacts.json');
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      contacts = await res.json();
-    } catch (e) {
-      console.warn('[DEBUG] Could not load contacts.json', e.message);
-      contacts = {};
-    }
-  }
-
-  async function loadLang(lang) {
-    try {
-      const res = await fetch(`data/${lang}.json`);
-      if (!res.ok) throw new Error(`HTTP error ${res.status}`);
-      
-      const data = await res.json();
-      return data;
-    } catch (e) {
-      console.error(`[DEBUG] Failed to load/parse ${lang}.json:`, e.message);
-      if (lang !== 'lt') {
-        return loadLang('lt');
-      }
-      return {};
-    }
-  }
-
-  function applyContacts() {
-    document.querySelectorAll('[data-contact]').forEach(el => {
-      const type = el.getAttribute('data-contact');
-
-      if (type === 'telegram' && contacts.phone) {
-        el.href = contacts.telegram 
-          ? `tg://resolve?domain=${contacts.telegram}` 
-          : `tg://resolve?phone=${contacts.phone}`;
-        el.removeAttribute('target');
-      } else if (type === 'whatsapp' && contacts.phone) {
-        el.href = `https://wa.me/${contacts.phone}`;
-        el.target = '_blank';
-        el.rel = 'noopener';
-      } else if (type === 'viber' && contacts.phone) {
-        el.href = `viber://chat?number=%2B${contacts.phone}`;
-        el.removeAttribute('target');
-      } else if (type === 'email' && contacts.email) {
-        el.href = `mailto:${contacts.email}`;
-      } else if (type === 'phone' && contacts.phone) {
-        el.href = `tel:+${contacts.phone}`;
-        if (el.classList.contains('phone-link')) {
-          el.textContent = contacts.phone_formatter || contacts.phone_formatted;
-        }
-      }
-
-      const labelKey = `contacts.${type}Label`;
-      if (currentLangData[labelKey]) {
-        el.setAttribute('aria-label', currentLangData[labelKey]);
-        el.title = currentLangData[labelKey];
-      }
-    });
-
-    document.querySelectorAll('.email-link').forEach(el => {
-      if (contacts.email) el.textContent = contacts.email;
-    });
-  }
-
-  async function setLanguage(lang) {
-    if (!available.includes(lang)) lang = 'lt';
-
-    currentLangData = await loadLang(lang);
-    
-    let missingKeys = 0;
-
-    document.querySelectorAll('[data-i18n]').forEach(el => {
-      const key = el.getAttribute('data-i18n');
-      if (currentLangData[key] != null) {
-        el.textContent = currentLangData[key];
-      } else {
-        missingKeys++;
-        console.warn(`[DEBUG] Translation key missing: '${key}' in ${lang}`);
-      }
-    });
-
-    document.querySelectorAll('[data-i18n-alt]').forEach(el => {
-      const key = el.getAttribute('data-i18n-alt');
-      if (currentLangData[key] != null) el.alt = currentLangData[key];
-    });
-
-    if (missingKeys > 0) {
-       console.warn(`[DEBUG] ${missingKeys} keys were missing. Ensure your JSON files are FLAT (e.g. {"header.name": "..."}) and not nested.`);
-    }
-
-    document.documentElement.lang = lang;
-
+  <script>
     document.querySelectorAll('.lang-btn').forEach(btn => {
-      btn.setAttribute('aria-pressed', btn.dataset.lang === lang ? 'true' : 'false');
+      btn.addEventListener('click', () => {
+        const url = new URL(window.location.href);
+        url.searchParams.set('lang', btn.dataset.lang);
+        window.location.href = url;
+      });
     });
-
-    localStorage.setItem('lang', lang);
-    applyContacts();
-  }
-
-  document.querySelectorAll('.lang-btn').forEach(btn => {
-    btn.addEventListener('click', async () => {
-      const lang = btn.dataset.lang;
-      await setLanguage(lang); // Added await so it resolves before replacing history state
-      const url = new URL(window.location.href);
-      url.searchParams.set('lang', lang);
-      window.history.replaceState({}, '', url);
-    });
-  });
-
-  (async function init() {
-    await loadContacts();
-
-    const urlParams = new URLSearchParams(window.location.search);
-    const urlLang = (urlParams.get('lang') || '').toLowerCase();
-    const saved = localStorage.getItem('lang');
-    const browser = (navigator.language || 'lt').slice(0, 2).toLowerCase();
-
-    const start = available.includes(urlLang) ? urlLang :
-                  available.includes(saved) ? saved :
-                  available.includes(browser) ? browser : 'lt';
-
-    await setLanguage(start);
-  })();
-</script>
-
+  </script>
 </body>
 </html>
