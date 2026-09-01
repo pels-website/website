@@ -1,6 +1,6 @@
 {
   "meta.title": "Advokatas | Baudžiamoji teisė",
-  "header.name": "Advokatas [Vardas Pavardė]",
+  "header.name": "Advokatas {name}",
   "header.tagline1": "Baudžiamosios teisės specialistas",
   "header.tagline2": " Daugiau nei 45 m. patirtis",
   "hero.alt": "Advokato nuotrauka",
@@ -22,5 +22,5 @@
   "consult_online_title": "Nuotoliu",
   "consult_online_desc": "Zoom, WhatsApp, Viber, Telegram arba telefonu",
   "contacts.workplace": "Advokato darbo vieta yra nuotolinė",
-  "footer.copyright": "© 2026 Advokatas [Vardas Pavardė]"
+  "footer.copyright": "© {year} Advokatas {name}"
 }
