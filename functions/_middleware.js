@@ -75,6 +75,12 @@ export async function onRequest(context) {
     .on('link[rel="canonical"]', { element(el) {
       el.setAttribute('href', url.href);
     }})
+    .on('link[rel="alternate"]', { element(el) {
+      const href = el.getAttribute('href');
+      if (href && href.startsWith('/')) {
+        el.setAttribute('href', origin + href);
+      }
+    }})
 
     .on('[data-i18n]', { element(el) {
       const v = resolve(el.getAttribute('data-i18n'));
