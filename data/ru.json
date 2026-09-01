@@ -1,6 +1,6 @@
 {
   "meta.title": "Адвокат | Уголовное право",
-  "header.name": "Адвокат [Имя Фамилия]",
+  "header.name": "Адвокат {name}",
   "header.tagline1": "Специалист по уголовному праву",
   "header.tagline2": "Более 45 лет практики",
   "hero.alt": "Фотография адвоката",
@@ -22,5 +22,5 @@
   "consult_online_title": "Онлайн / Видео",
   "consult_online_desc": "Zoom, WhatsApp, Viber, Telegram или по телефону",
   "contacts.workplace": "Рабочее место адвоката — удаленное",
-  "footer.copyright": "© 2026 Адвокат [Имя Фамилия]"
+  "footer.copyright": "© {year} Адвокат {name}"
 }
