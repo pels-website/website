@@ -1,6 +1,6 @@
 {
   "meta.title": "Barrister | Criminal Law",
-  "header.name": "Barrister [First Last]",
+  "header.name": "Barrister {name}",
   "header.tagline1": "Criminal Defense Specialist",
   "header.tagline2": "45+ Years of Experience",
   "hero.alt": "Photo of Barrister",
@@ -22,5 +22,5 @@
   "consult_online_title": "Online / Video",
   "consult_online_desc": "Zoom, WhatsApp, Viber, Telegram or phone",
   "contacts.workplace": "I work remotely",
-  "footer.copyright": "© 2026 Barrister [First Last]"
+  "footer.copyright": "© {year} Barrister {name}"
 }
