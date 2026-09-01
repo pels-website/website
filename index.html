@@ -208,21 +208,29 @@
   async function loadContacts() {
     try {
       const res = await fetch('data/contacts.json');
-      if (!res.ok) throw new Error('not found');
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
       contacts = await res.json();
     } catch (e) {
-      console.warn('Could not load contacts.json', e);
+      console.warn('[DEBUG] Could not load contacts.json', e.message);
       contacts = {};
     }
   }
 
   async function loadLang(lang) {
     try {
+      console.log(`[DEBUG] Attempting to load data/${lang}.json...`);
       const res = await fetch(`data/${lang}.json`);
-      if (!res.ok) throw new Error('not found');
-      return await res.json();
-    } catch {
-      if (lang !== 'lt') return loadLang('lt');
+      if (!res.ok) throw new Error(`HTTP error ${res.status}`);
+      
+      const data = await res.json();
+      console.log(`[DEBUG] Successfully loaded and parsed ${lang}.json`);
+      return data;
+    } catch (e) {
+      console.error(`[DEBUG] Failed to load/parse ${lang}.json:`, e.message);
+      if (lang !== 'lt') {
+        console.log(`[DEBUG] Falling back to Lithuanian (lt.json)`);
+        return loadLang('lt');
+      }
       return {};
     }
   }
@@ -260,30 +268,36 @@
     });
 
     document.querySelectorAll('.email-link').forEach(el => {
-      if (contacts.email) {
-        el.textContent = contacts.email;
-      }
+      if (contacts.email) el.textContent = contacts.email;
     });
   }
 
   async function setLanguage(lang) {
+    console.log(`[DEBUG] setLanguage triggered for: ${lang}`);
     if (!available.includes(lang)) lang = 'lt';
 
     currentLangData = await loadLang(lang);
+    
+    let missingKeys = 0;
 
     document.querySelectorAll('[data-i18n]').forEach(el => {
       const key = el.getAttribute('data-i18n');
       if (currentLangData[key] != null) {
         el.textContent = currentLangData[key];
+      } else {
+        missingKeys++;
+        console.warn(`[DEBUG] Translation key missing: '${key}' in ${lang}`);
       }
     });
 
     document.querySelectorAll('[data-i18n-alt]').forEach(el => {
       const key = el.getAttribute('data-i18n-alt');
-      if (currentLangData[key] != null) {
-        el.alt = currentLangData[key];
-      }
+      if (currentLangData[key] != null) el.alt = currentLangData[key];
     });
+
+    if (missingKeys > 0) {
+       console.warn(`[DEBUG] ${missingKeys} keys were missing. Ensure your JSON files are FLAT (e.g. {"header.name": "..."}) and not nested.`);
+    }
 
     document.documentElement.lang = lang;
 
@@ -292,14 +306,13 @@
     });
 
     localStorage.setItem('lang', lang);
-
     applyContacts();
   }
 
   document.querySelectorAll('.lang-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
+    btn.addEventListener('click', async () => {
       const lang = btn.dataset.lang;
-      setLanguage(lang);
+      await setLanguage(lang); // Added await so it resolves before replacing history state
       const url = new URL(window.location.href);
       url.searchParams.set('lang', lang);
       window.history.replaceState({}, '', url);
@@ -318,8 +331,10 @@
                   available.includes(saved) ? saved :
                   available.includes(browser) ? browser : 'lt';
 
+    console.log(`[DEBUG] Initializing page with language: ${start}`);
     await setLanguage(start);
   })();
 </script>
+
 </body>
 </html>
