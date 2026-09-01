@@ -218,17 +218,14 @@
 
   async function loadLang(lang) {
     try {
-      console.log(`[DEBUG] Attempting to load data/${lang}.json...`);
       const res = await fetch(`data/${lang}.json`);
       if (!res.ok) throw new Error(`HTTP error ${res.status}`);
       
       const data = await res.json();
-      console.log(`[DEBUG] Successfully loaded and parsed ${lang}.json`);
       return data;
     } catch (e) {
       console.error(`[DEBUG] Failed to load/parse ${lang}.json:`, e.message);
       if (lang !== 'lt') {
-        console.log(`[DEBUG] Falling back to Lithuanian (lt.json)`);
         return loadLang('lt');
       }
       return {};
@@ -273,7 +270,6 @@
   }
 
   async function setLanguage(lang) {
-    console.log(`[DEBUG] setLanguage triggered for: ${lang}`);
     if (!available.includes(lang)) lang = 'lt';
 
     currentLangData = await loadLang(lang);
@@ -331,7 +327,6 @@
                   available.includes(saved) ? saved :
                   available.includes(browser) ? browser : 'lt';
 
-    console.log(`[DEBUG] Initializing page with language: ${start}`);
     await setLanguage(start);
   })();
 </script>
