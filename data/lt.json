@@ -23,4 +23,9 @@
   "consult_online_desc": "Zoom, WhatsApp, Viber, Telegram arba telefonu",
   "contacts.workplace": "Advokato darbo vieta yra nuotolinė",
   "footer.copyright": "© {year} Advokatas {name}"
+  "meta.description": "Baudžiamosios teisės advokatas, turintis daugiau nei 45 m. praktikos stažą.",
+  "contacts.telegramLabel": "Telegram",
+  "contacts.whatsappLabel": "WhatsApp",
+  "contacts.viberLabel": "Viber",
+  "contacts.locationLabel": "Adresas"
 }
