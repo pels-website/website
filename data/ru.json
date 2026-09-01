@@ -22,5 +22,10 @@
   "consult_online_title": "Онлайн / Видео",
   "consult_online_desc": "Zoom, WhatsApp, Viber, Telegram или по телефону",
   "contacts.workplace": "Рабочее место адвоката — удаленное",
-  "footer.copyright": "© {year} Адвокат {name}"
+  "footer.copyright": "© {year} Адвокат {name}",
+  "meta.description": "Адвокат по уголовному праву с более чем 45-летним стажем.",
+  "contacts.telegramLabel": "Telegram",
+  "contacts.whatsappLabel": "WhatsApp",
+  "contacts.viberLabel": "Viber",
+  "contacts.locationLabel": "Адрес"
 }
