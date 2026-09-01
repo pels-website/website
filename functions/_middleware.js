@@ -4,7 +4,6 @@ export async function onRequest(context) {
   const path = url.pathname;
   const origin = url.origin;
 
-  // Pass through non-HTML assets untouched
   if (path !== '/' && !path.endsWith('.html')) {
     return next();
   }
@@ -16,10 +15,8 @@ export async function onRequest(context) {
   const lang = available.includes(urlLang) ? urlLang
              : available.includes(acceptLang) ? acceptLang : 'lt';
 
-  // Get the static HTML from Pages
   const response = await next();
 
-  // Fetch JSON data via ASSETS binding (bypasses Functions, goes straight to static files)
   const [dataRes, contactsRes] = await Promise.all([
     env.ASSETS.fetch(new URL(`/data/${lang}.json`, url)).catch(() => null),
     env.ASSETS.fetch(new URL('/data/contacts.json', url)).catch(() => null),
@@ -28,7 +25,9 @@ export async function onRequest(context) {
   const data = dataRes?.ok ? await dataRes.json() : {};
   const contacts = contactsRes?.ok ? await contactsRes.json() : {};
 
-  const get = (path) => path.split('.').reduce((o, k) => o?.[k], data);
+  // FLAT KEY LOOKUP — your JSON uses "meta.title", not nested objects
+  const get = (path) => data[path];
+
   const name = contacts.names?.[lang] || contacts.names?.lt || 'Vardas Pavardė';
   const year = new Date().getFullYear();
 
@@ -40,14 +39,14 @@ export async function onRequest(context) {
     return v;
   };
 
-  const rawPhone = contacts.phone?.toString().trim() || '';
-  const phone = rawPhone.replace(/^\+/, '');
-  const phoneDisplay = contacts.phone_formatted || rawPhone;
+  // phone_formatted stripped of + and spaces for links; kept as-is for display
+  const phoneFormatted = contacts.phone_formatted?.toString().trim() || '';
+  const phone = phoneFormatted.replace(/[+\s]/g, '');
+  const phoneDisplay = phoneFormatted;
 
   const rewriter = new HTMLRewriter()
     .on('html', { element(el) { el.setAttribute('lang', lang); } })
 
-    // Open Graph / Messenger previews
     .on('meta[property="og:title"]', { element(el) {
       const v = resolve('meta.title'); if (v != null) el.setAttribute('content', v);
     }})
@@ -67,7 +66,6 @@ export async function onRequest(context) {
       const v = resolve('hero.alt'); if (v != null) el.setAttribute('content', v);
     }})
 
-    // SEO
     .on('title', { element(el) {
       const v = resolve('meta.title'); if (v != null) el.setInnerContent(v);
     }})
@@ -78,7 +76,6 @@ export async function onRequest(context) {
       el.setAttribute('href', url.href);
     }})
 
-    // Page content
     .on('[data-i18n]', { element(el) {
       const v = resolve(el.getAttribute('data-i18n'));
       if (v != null) el.setInnerContent(v);
@@ -88,12 +85,10 @@ export async function onRequest(context) {
       if (v != null) el.setAttribute('alt', v);
     }})
 
-    // Language buttons
     .on('.lang-btn', { element(el) {
       el.setAttribute('aria-pressed', el.getAttribute('data-lang') === lang ? 'true' : 'false');
     }})
 
-    // Contacts
     .on('a[data-contact="phone"]', { element(el) {
       if (phone) el.setAttribute('href', `tel:+${phone}`);
     }})
@@ -125,7 +120,6 @@ export async function onRequest(context) {
       }
     }})
 
-    // JSON-LD
     .on('script[type="application/ld+json"]', { element(el) {
       const json = {
         "@context": "https://schema.org",
