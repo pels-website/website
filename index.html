@@ -297,16 +297,22 @@
   }
 
   document.querySelectorAll('.lang-btn').forEach(btn => {
-    btn.addEventListener('click', () => setLanguage(btn.dataset.lang));
+    btn.addEventListener('click', () => {
+      const lang = btn.dataset.lang;
+      setLanguage(lang);
+      const url = new URL(window.location.href);
+      url.searchParams.set('lang', lang);
+      window.history.replaceState({}, '', url);
+    });
   });
 
   (async function init() {
     await loadContacts();
 
     const urlParams = new URLSearchParams(window.location.search);
-    const urlLang = urlParams.get('lang');
+    const urlLang = (urlParams.get('lang') || '').toLowerCase();
     const saved = localStorage.getItem('lang');
-    const browser = (navigator.language || 'lt').slice(0, 2);
+    const browser = (navigator.language || 'lt').slice(0, 2).toLowerCase();
 
     const start = available.includes(urlLang) ? urlLang :
                   available.includes(saved) ? saved :
