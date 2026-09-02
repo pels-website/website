@@ -42,6 +42,8 @@
   --toggle-bg: var(--contact-bar-bg);
   --share-panel-bg: var(--toggle-bg);
   --share-btn-border: var(--overlay-active);
+
+  --btn-radius: 8px;
 }
 
 * {
@@ -503,15 +505,11 @@ footer {
   }
 }
 
-/* ── Main share trigger button ── */
-.share-wrap {
-  position: relative;
-}
-
+/* ── Share trigger button: same radius & bg as lang toggle ── */
 .share-btn {
   background: var(--toggle-bg);
   border: 1px solid var(--share-btn-border);
-  border-radius: 4px;
+  border-radius: var(--btn-radius);   /* matches lang buttons */
   padding: 6px;
   cursor: pointer;
   color: var(--bg);
@@ -527,7 +525,7 @@ footer {
   filter: brightness(1.1);
 }
 
-/* ── Dropdown panel: horizontal, dark container ── */
+/* ── Dropdown panel ── */
 .share-panel {
   position: absolute;
   right: 0;
@@ -547,7 +545,7 @@ footer {
   display: none;
 }
 
-/* ── Individual share buttons: icon-only, brand-coloured squares ── */
+/* ── Individual share buttons: icon-only, brand colours ── */
 .share-option {
   display: flex;
   align-items: center;
@@ -555,7 +553,7 @@ footer {
   width: 36px;
   height: 36px;
   padding: 0;
-  border-radius: 6px;
+  border-radius: var(--btn-radius);
   text-decoration: none;
   transition: filter 0.2s, transform 0.1s;
 }
@@ -573,3 +571,35 @@ footer {
 .share-option[data-share="whatsapp"] { background: var(--brand-whatsapp); }
 .share-option[data-share="viber"]    { background: var(--brand-viber); }
 .share-option[data-share="sms"]      { background: var(--brand-phone); }
+
+/* ── Mobile header layout ── */
+@media (max-width: 768px) {
+  .header-top {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;   /* share wraps to right if no room */
+    align-items: center;
+    gap: 8px;
+  }
+
+  /* Name + taglines full width, left-aligned */
+  .header-top > div:first-child {
+    width: 100%;
+    text-align: left;
+    margin-bottom: 10px;
+  }
+
+  .header-top h1,
+  .header-top p {
+    text-align: left;
+  }
+
+  /* Lang switcher left, share button right */
+  .lang-switch {
+    margin-right: auto;   /* pushes share to right when both fit */
+  }
+
+  .share-wrap {
+    flex: 0 0 auto;
+  }
+}
