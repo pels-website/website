@@ -200,6 +200,48 @@
         window.location.href = url;
       });
     });
+
+    const shareBtn = document.querySelector('.share-btn');
+    const sharePanel = document.querySelector('.share-panel');
+    const shareMsgEl = document.getElementById('share-msg');
+  
+    if (shareBtn && sharePanel) {
+      shareBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const expanded = shareBtn.getAttribute('aria-expanded') === 'true';
+        shareBtn.setAttribute('aria-expanded', String(!expanded));
+        sharePanel.hidden = expanded;
+      });
+  
+      document.addEventListener('click', () => {
+        shareBtn.setAttribute('aria-expanded', 'false');
+        sharePanel.hidden = true;
+      });
+  
+      const shareText = (shareMsgEl?.textContent || '').trim();
+      const pageUrl = window.location.href;
+      const encodedBody = encodeURIComponent(`${shareText} ${pageUrl}`);
+      const subject = encodeURIComponent(document.title);
+
+      document.querySelectorAll('.share-option').forEach(opt => {
+        const type = opt.dataset.share;
+        if (type === 'email') {
+          opt.href = `mailto:?subject=${subject}&body=${encodedBody}`;
+        } else if (type === 'telegram') {
+          opt.href = `https://t.me/share/url?url=${encodeURIComponent(pageUrl)}&text=${encodeURIComponent(shareText)}`;
+          opt.target = '_blank';
+          opt.rel = 'noopener noreferrer';
+        } else if (type === 'whatsapp') {
+          opt.href = `https://wa.me/?text=${encodedBody}`;
+          opt.target = '_blank';
+          opt.rel = 'noopener noreferrer';
+        } else if (type === 'viber') {
+          opt.href = `viber://forward?text=${encodedBody}`;
+        } else if (type === 'sms') {
+          opt.href = `sms:?body=${encodedBody}`;
+        }
+      });
+    }
   </script>
 </body>
 </html>
