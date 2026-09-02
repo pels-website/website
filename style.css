@@ -3,28 +3,28 @@
    ========================================= */
 :root {
   /* Core Base Colors */
-  --bg: #f7f4ef;                /* Soft warm background */
-  --surface: #fcfbf7;           /* Warm cream surface */
-  --surface-hover: #f5f1ea;     /* Warm hover fill */
-  --surface-active: #f0ebe3;    /* Pressed/active state */
-  --text: #2c2420;              /* Soft dark brown text */
-  --text-muted: #5c534c;        /* Secondary text */
-  --border: #ddd5cb;            /* Warm soft border */
-  --border-hover: #b8a99a;      /* Hover border */
-  --accent: #4a3f35;            /* Dark warm accent */
-  --focus: #c4a574;             /* Soft gold focus ring */
+  --bg: #f7f4ef;
+  --surface: #fcfbf7;
+  --surface-hover: #f5f1ea;
+  --surface-active: #f0ebe3;
+  --text: #2c2420;
+  --text-muted: #5c534c;
+  --border: #ddd5cb;
+  --border-hover: #b8a99a;
+  --accent: #4a3f35;
+  --focus: #c4a574;
 
   /* Contact Cards Palette */
-  --card-bg: #faf7f2;           /* Modified soft cream card background */
+  --card-bg: #faf7f2;
 
   /* Platform & Pictogram Brand Colors */
   --contact-bar-bg: #3c2f2f;
-  --brand-location: #9E1B42; /* Rich Crimson */
-  --brand-phone:    #1C5D42; /* Deep Jade Green */
-  --brand-email:    #1B365D; /* Executive Slate Navy */
-  --brand-whatsapp: #0E6B47; /* Deep Forest Emerald */
-  --brand-telegram: #1D638B; /* Ocean Blue */
-  --brand-viber:    #5B2D73; /* Royal Velvet Purple */ 
+  --brand-location: #9E1B42;
+  --brand-phone:    #1C5D42;
+  --brand-email:    #1B365D;
+  --brand-whatsapp: #0E6B47;
+  --brand-telegram: #1D638B;
+  --brand-viber:    #5B2D73;
 
   /* Shared Overlays & Shadows */
   --overlay-light: rgba(255, 255, 255, 0.12);
@@ -32,13 +32,8 @@
   --shadow-light: rgba(0, 0, 0, 0.08);
   --shadow-card: rgba(0, 0, 0, 0.05);
   --shadow-dark: rgba(0, 0, 0, 0.25);
-   
+
   /* Share panel matches language toggle background */
-  --toggle-bg: var(--contact-bar-bg);
-  --share-panel-bg: var(--toggle-bg);
-  --share-btn-border: var(--overlay-active);
-  --share-option-hover: var(--overlay-light);
-  --share-text: var(--bg);
   --toggle-bg: var(--contact-bar-bg);
   --share-panel-bg: var(--toggle-bg);
   --share-btn-border: var(--overlay-active);
@@ -253,10 +248,6 @@ h2 {
   cursor: pointer;
 }
 
-.contact-card-link:hover {
-  text-decoration: none;
-}
-
 /* Pictogram Box */
 .pictogram-box {
   display: flex;
@@ -265,7 +256,6 @@ h2 {
   width: 40px;
   height: 40px;
   border-radius: 8px;
-  flex-shrink: 0;
   transition: transform 0.15s ease;
 }
 
@@ -418,7 +408,7 @@ footer {
   justify-content: space-around;
   align-items: center;
   box-shadow: 0 -2px 12px var(--shadow-dark);
-  transition: all 0.25s ease;
+  transition: background 0.25s ease, box-shadow 0.25s ease;
 }
 
 .mobile-contact-btn {
@@ -497,19 +487,17 @@ footer {
   }
 }
 
-@media (max-width: 520px) {
-  .header-top {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
+/* ── Share button wrapper (anchors the dropdown) ── */
+.share-wrap {
+  position: relative;
+  flex: 0 0 auto;
 }
 
-/* ── Share trigger button: same radius & bg as lang toggle ── */
+/* ── Share trigger button ── */
 .share-btn {
   background: var(--toggle-bg);
   border: 1px solid var(--share-btn-border);
-  border-radius: var(--btn-radius);   /* matches lang buttons */
+  border-radius: var(--btn-radius);
   padding: 6px;
   cursor: pointer;
   color: var(--bg);
@@ -577,7 +565,7 @@ footer {
   .header-top {
     display: flex;
     flex-wrap: wrap;
-    justify-content: flex-end;   /* share wraps to right if no room */
+    justify-content: flex-end;
     align-items: center;
     gap: 8px;
   }
@@ -596,11 +584,19 @@ footer {
 
   /* Lang switcher left, share button right */
   .lang-switch {
-    margin-right: auto;   /* pushes share to right when both fit */
+    margin-right: auto;
   }
+}   
 
-  .share-wrap {
-    position: relative;
-    flex: 0 0 auto;
+@media (max-width: 520px) {
+  .header-top {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
   }
 }
+
+
+
+
+
