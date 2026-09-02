@@ -20,6 +20,7 @@
   "contacts.whatsappLabel": "WhatsApp",
   "contacts.viberLabel": "Viber",
   "contacts.locationLabel": "Location",
+  "contacts.sms": "SMS",
   "contacts.intro1": "Free Initial Phone Consultation (Up to 15 min)",
   "contacts.intro2": "Tap to call — we will briefly discuss your case and outline the necessary next steps.",
   "consult_in_person_title": "In-person",
@@ -27,5 +28,6 @@
   "consult_online_title": "Online / Video",
   "consult_online_desc": "Zoom, WhatsApp, Viber, Telegram or phone",
   "contacts.workplace": "I work remotely",
-  "footer.copyright": "© {year} Barrister {name}"
+  "footer.copyright": "© {year} Barrister {name}",
+  "share.text": "Please see the lawyer's details:"
 }
