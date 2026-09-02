@@ -31,7 +31,8 @@ export async function onRequest(context) {
   const name  = contacts.names?.[lang]  || contacts.names?.lt  || '';
   const name2 = contacts.names2?.[lang] || contacts.names2?.lt || '';
   const name3 = contacts.names3?.[lang] || contacts.names3?.lt || '';
-
+  const year = new Date().getFullYear();
+  
   const resolve = (path) => {
     let v = get(path);
     if (typeof v === 'string') {
@@ -39,15 +40,6 @@ export async function onRequest(context) {
            .replaceAll('{name2}', name2)
            .replaceAll('{name3}', name3)
            .replaceAll('{year}',  year.toString());
-    }
-    return v;
-  };
-  const year = new Date().getFullYear();
-
-  const resolve = (path) => {
-    let v = get(path);
-    if (typeof v === 'string') {
-      v = v.replaceAll('{name}', name).replaceAll('{year}', year.toString());
     }
     return v;
   };
