@@ -45,14 +45,37 @@
       </div>
       <div class="lang-switch" role="group" aria-label="Language">
         <button class="lang-btn" data-lang="en" aria-pressed="false" aria-label="English" title="English">
-          <img src="svg/en.svg" alt="" width="24" height="18">
+          <img src="svg/en.svg" alt="" width="24" height="12">
         </button>
         <button class="lang-btn" data-lang="lt" aria-pressed="true" aria-label="Lietuvių" title="Lietuvių">
-          <img src="svg/lt.svg" alt="" width="24" height="18">
+          <img src="svg/lt.svg" alt="" width="24" height="12">
         </button>
         <button class="lang-btn" data-lang="ru" aria-pressed="false" aria-label="Русский" title="Русский">
-          <img src="svg/ru.svg" alt="" width="24" height="18">
+          <img src="svg/ru.svg" alt="" width="24" height="12">
         </button>
+      </div>
+      <div class="share-wrap">
+        <button class="share-btn" aria-label="Share" aria-expanded="false" title="Share">
+          <img src="svg/share.svg" alt="" width="20" height="20">
+        </button>
+        <div class="share-panel" hidden>
+          <a class="share-option" data-share="email" href="#">
+            <img src="svg/email.svg" alt="" width="16" height="16"><span data-i18n="share.email"></span>
+          </a>
+          <a class="share-option" data-share="telegram" href="#">
+            <img src="svg/telegram.svg" alt="" width="16" height="16"><span data-i18n="share.telegram"></span>
+          </a>
+          <a class="share-option" data-share="whatsapp" href="#">
+            <img src="svg/whatsapp.svg" alt="" width="16" height="16"><span data-i18n="share.whatsapp"></span>
+          </a>
+          <a class="share-option" data-share="viber" href="#">
+            <img src="svg/viber.svg" alt="" width="16" height="16"><span data-i18n="share.viber"></span>
+          </a>
+          <a class="share-option" data-share="sms" href="#">
+            <img src="svg/phone.svg" alt="" width="16" height="16"><span data-i18n="share.sms"></span>
+          </a>
+        </div>
+        <span hidden data-i18n="share.text" id="share-msg"></span>
       </div>
     </div>
   </header>
