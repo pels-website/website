@@ -27,5 +27,7 @@
   "contacts.telegramLabel": "Telegram",
   "contacts.whatsappLabel": "WhatsApp",
   "contacts.viberLabel": "Viber",
-  "contacts.locationLabel": "Адрес"
+  "contacts.smsLabel": "SMS",
+  "contacts.locationLabel": "Адрес",
+  "share.text": "Пожалуйста, ознакомьтесь с контактами адвоката:"
 }
