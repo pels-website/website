@@ -32,6 +32,13 @@
   --shadow-light: rgba(0, 0, 0, 0.08);
   --shadow-card: rgba(0, 0, 0, 0.05);
   --shadow-dark: rgba(0, 0, 0, 0.25);
+   
+  /* Share panel matches language toggle background */
+  --toggle-bg: var(--contact-bar-bg);
+  --share-panel-bg: var(--toggle-bg);
+  --share-btn-border: var(--overlay-active);
+  --share-option-hover: var(--overlay-light);
+  --share-text: var(--bg);
 }
 
 * {
@@ -493,11 +500,75 @@ footer {
   }
 }
 
-.share-wrap { position: relative; }
-.share-btn { background: transparent; border: 1px solid rgba(255,255,255,0.25); border-radius: 4px; padding: 5px; cursor: pointer; color: inherit; display: flex; align-items: center; justify-content: center; line-height: 0; }
-.share-btn:hover { border-color: rgba(255,255,255,0.6); }
-.share-panel { position: absolute; right: 0; top: calc(100% + 6px); background: #1a1a1a; border: 1px solid rgba(255,255,255,0.12); border-radius: 6px; padding: 4px 0; min-width: 150px; box-shadow: 0 8px 24px rgba(0,0,0,0.35); z-index: 100; }
-.share-panel[hidden] { display: none; }
+/* ── Share trigger button ── */
+.share-wrap {
+  position: relative;
+}
+
+.share-btn {
+  background: transparent;
+  border: 1px solid var(--share-btn-border);
+  border-radius: 4px;
+  padding: 6px;
+  cursor: pointer;
+  color: var(--share-text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 0;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.share-btn:hover {
+  border-color: var(--border-hover);
+  background: var(--share-option-hover);
+}
+
+/* ── Dropdown panel: horizontal row, matches lang-toggle bg ── */
+.share-panel {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 6px);
+  background: var(--share-panel-bg);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 6px;
+  display: flex;
+  flex-direction: row;
+  gap: 4px;
+  box-shadow: 0 8px 24px var(--shadow-dark);
+  z-index: 100;
+}
+
+.share-panel[hidden] {
+  display: none;
+}
+
+/* ── Each option: icon + tiny label, same hover as contact buttons ── */
+.share-option {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  min-width: 56px;
+  padding: 6px 4px;
+  border-radius: 6px;
+  color: var(--share-text);
+  text-decoration: none;
+  font-size: 11px;
+  line-height: 1.2;
+  transition: background 0.2s;
+}
+
+.share-option:hover {
+  background: var(--share-option-hover);
+}
+
+.share-option img {
+  opacity: 0.9;
+  flex-shrink: 0;
+}
 .share-option { display: flex; align-items: center; gap: 10px; padding: 7px 12px; color: inherit; text-decoration: none; font-size: 14px; }
 .share-option:hover { background: rgba(255,255,255,0.07); }
 .share-option img { opacity: 0.75; flex-shrink: 0; }
